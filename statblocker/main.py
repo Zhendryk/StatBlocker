@@ -7,3 +7,7 @@ def main():
     app = QApplication(sys.argv)
     main_window = MainController(app)
     main_window.run()
+
+
+if __name__ == "__main__":
+    main()
