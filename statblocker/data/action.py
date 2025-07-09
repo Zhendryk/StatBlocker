@@ -34,6 +34,32 @@ class CombatCharacteristic:
             [c.capitalize() for c in self.monster_name.split(" ")]
         )
 
+    def __getstate__(self):
+        # Convert enum keys to string names for JSON compatibility
+        return {
+            "monster_name": self.monster_name,
+            "ability_scores": self.ability_scores,  # This should already be able to serialize itself
+            "proficiency_bonus": self.proficiency_bonus,
+            "saving_throws": {k.name: v.name for k, v in self.saving_throws.items()},
+            "has_lair": self.has_lair,
+            "title": self.title,
+            "description": self.description,
+            "ctype": self.ctype.name,
+        }
+
+    def __setstate__(self, state):
+        # Convert keys back to enums during deserialization
+        self.monster_name = state["monster_name"]
+        self.ability_scores = state["ability_scores"]
+        self.proficiency_bonus = state["proficiency_bonus"]
+        self.saving_throws = {
+            Ability[k]: Proficiency[v] for k, v in state["saving_throws"].items()
+        }
+        self.has_lair = state["has_lair"]
+        self.title = state["title"]
+        self.description = state["description"]
+        self.ctype = CharacteristicType[state["ctype"]]
+
     @property
     def resolved_description(self) -> str:
         desc = self.description.strip().rstrip(".")
@@ -54,6 +80,21 @@ class Trait(CombatCharacteristic):
     limited_use_type: LimitedUsageType = field(default=LimitedUsageType.UNLIMITED)
     limited_use_charges: dict[str, int] = field(default_factory=dict)
     lair_charge_bonuses: dict[str, int] = field(default_factory=dict)
+
+    def __getstate__(self):
+        # Convert enum keys to string names for JSON compatibility
+        state = super().__getstate__()
+        state["limited_use_type"] = self.limited_use_type.name
+        state["limited_use_charges"] = self.limited_use_charges
+        state["lair_charge_bonuses"] = self.lair_charge_bonuses
+        return state
+
+    def __setstate__(self, state):
+        # Convert keys back to enums during deserialization
+        super().__setstate__(state)
+        self.limited_use_type = LimitedUsageType[state["limited_use_type"]]
+        self.limited_use_charges = state["limited_use_charges"]
+        self.lair_charge_bonuses = state["lair_charge_bonuses"]
 
 
 @dataclass

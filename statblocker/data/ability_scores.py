@@ -14,7 +14,7 @@ STAT_STR_TO_ABILITY: dict[str, Ability] = {
 }
 
 
-def _calculate_modifier(score: int) -> int:
+def calculate_ability_modifier(score: int) -> int:
     """Calculates the ability score modifier."""
     return math.floor(float((score - 10) / 2))
 
@@ -51,7 +51,7 @@ class AbilityScores(StatblockComponent):
         }
 
     def _calculate_save(self, ability: Ability) -> int:
-        modifier = _calculate_modifier(self.scores.get(ability, 10))
+        modifier = calculate_ability_modifier(self.scores.get(ability, 10))
         prof_bonus = {
             Proficiency.NORMAL: 0,
             Proficiency.PROFICIENT: self.proficiency_bonus,
@@ -61,7 +61,8 @@ class AbilityScores(StatblockComponent):
 
     def get_skill_modifier(self, skill: Skill, bonus: int = 0) -> int:
         return (
-            _calculate_modifier(self.scores.get(skill.associated_ability, 10)) + bonus
+            calculate_ability_modifier(self.scores.get(skill.associated_ability, 10))
+            + bonus
         )
 
     @property
@@ -70,7 +71,7 @@ class AbilityScores(StatblockComponent):
 
     @property
     def strength_modifier(self) -> int:
-        return _calculate_modifier(self.strength_score)
+        return calculate_ability_modifier(self.strength_score)
 
     @property
     def strength_save(self) -> int:
@@ -89,7 +90,7 @@ class AbilityScores(StatblockComponent):
 
     @property
     def dexterity_modifier(self) -> int:
-        return _calculate_modifier(self.dexterity_score)
+        return calculate_ability_modifier(self.dexterity_score)
 
     @property
     def dexterity_save(self) -> int:
@@ -108,7 +109,7 @@ class AbilityScores(StatblockComponent):
 
     @property
     def constitution_modifier(self) -> int:
-        return _calculate_modifier(self.constitution_score)
+        return calculate_ability_modifier(self.constitution_score)
 
     @property
     def constitution_save(self) -> int:
@@ -127,7 +128,7 @@ class AbilityScores(StatblockComponent):
 
     @property
     def intelligence_modifier(self) -> int:
-        return _calculate_modifier(self.intelligence_score)
+        return calculate_ability_modifier(self.intelligence_score)
 
     @property
     def intelligence_save(self) -> int:
@@ -146,7 +147,7 @@ class AbilityScores(StatblockComponent):
 
     @property
     def wisdom_modifier(self) -> int:
-        return _calculate_modifier(self.wisdom_score)
+        return calculate_ability_modifier(self.wisdom_score)
 
     @property
     def wisdom_save(self) -> int:
@@ -165,7 +166,7 @@ class AbilityScores(StatblockComponent):
 
     @property
     def charisma_modifier(self) -> int:
-        return _calculate_modifier(self.charisma_score)
+        return calculate_ability_modifier(self.charisma_score)
 
     @property
     def charisma_save(self) -> int:
@@ -177,6 +178,13 @@ class AbilityScores(StatblockComponent):
             self.proficiency_levels.get(Ability.CHARISMA, Proficiency.NORMAL)
             == Proficiency.PROFICIENT
         )
+
+    @property
+    def saving_throws(self) -> dict[Ability, Proficiency]:
+        return {
+            ability: self.proficiency_levels.get(ability, Proficiency.NORMAL)
+            for ability in Ability
+        }
 
     @property
     def display_str(self) -> str:
@@ -204,7 +212,7 @@ class AbilityScores(StatblockComponent):
         bonus: int | None = None,
     ) -> int:
         ability = STAT_STR_TO_ABILITY[stat]
-        ability_mod = self._calculate_modifier(self.scores.get(ability, 10))
+        ability_mod = calculate_ability_modifier(self.scores.get(ability, 10))
         calced_bonus = 0
         if sign and bonus is not None:
             match sign:

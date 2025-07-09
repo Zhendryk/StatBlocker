@@ -276,7 +276,7 @@ class LightingCondition(StatblockEnum):
     DARKNESS = auto()
 
 
-class LimitedUsageType:
+class LimitedUsageType(StatblockEnum):
     UNLIMITED = auto()
     X_PER_DAY = auto()
     RECHARGE_X_Y = auto()

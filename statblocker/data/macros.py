@@ -19,7 +19,7 @@ from statblocker.data.enums import (
     LightingCondition,
     ObscurityLevel,
 )
-from statblocker.data.ability_scores import AbilityScores
+from statblocker.data.ability_scores import AbilityScores, calculate_ability_modifier
 
 # [XDY] - computes a roll of X dY dice
 PATTERN_DICE_ROLL: Final[re.Pattern] = re.compile(r"\[(\d+)([dD](?:4|6|8|10|12|20))\]")
@@ -113,6 +113,8 @@ def _calculate_modifier(sign: str, modifier: int) -> int:
             return abs(modifier)
         case "-":
             return -abs(modifier)
+        case "natural":
+            return modifier
         case _:
             raise NotImplementedError
 
@@ -126,7 +128,7 @@ def _substitute_dice_roll(match: re.Match) -> str:
 
 def _substitute_stat_modifier(ability_scores: AbilityScores, match: re.Match) -> str:
     stat = Ability.from_abbreviation(match.group(CG_STAT_MODIFIER_STAT))
-    ability_modifier = ability_scores._calculate_modifier(ability_scores.scores[stat])
+    ability_modifier = calculate_ability_modifier(ability_scores.scores[stat])
     return str(ability_modifier)
 
 
@@ -134,7 +136,7 @@ def _substitute_stat_atk_roll(
     ability_scores: AbilityScores, proficiency_bonus: int, match: re.Match
 ) -> str:
     stat = Ability.from_abbreviation(match.group(CG_STAT_ATK_ROLL_STAT))
-    ability_modifier = ability_scores._calculate_modifier(ability_scores.scores[stat])
+    ability_modifier = calculate_ability_modifier(ability_scores.scores[stat])
     total_atk_bonus = ability_modifier + proficiency_bonus
     return f"+{total_atk_bonus}" if total_atk_bonus >= 0 else str(total_atk_bonus)
 
@@ -144,7 +146,7 @@ def _substitute_stat_dmg_roll(ability_scores: AbilityScores, match: re.Match) ->
     num_dice = int(match.group(CG_STAT_DMG_ROLL_NUM_DICE))
     die_type = Die.from_name(match.group(CG_STAT_DMG_ROLL_DIE_TYPE))
     dice = Dice({die_type: num_dice})
-    ability_modifier = ability_scores._calculate_modifier(ability_scores.scores[stat])
+    ability_modifier = calculate_ability_modifier(ability_scores.scores[stat])
     total_avg_damage = dice.average_value + ability_modifier
     modifier_str = ""
     if ability_modifier > 0:
@@ -158,7 +160,7 @@ def _substitute_stat_save_dc(
     ability_scores: AbilityScores, proficiency_bonus: int, match: re.Match
 ) -> str:
     stat = Ability.from_abbreviation(match.group(CG_STAT_SAVE_DC_STAT))
-    ability_modifier = ability_scores._calculate_modifier(ability_scores.scores[stat])
+    ability_modifier = _calculate_modifier("natural", ability_scores.scores[stat])
     save_dc = 8 + proficiency_bonus + ability_modifier
     return str(save_dc)
 
@@ -167,7 +169,7 @@ def _substitute_modified_dice_roll(match: re.Match) -> str:
     num_dice = int(match.group(CG_MODIFIED_DICE_ROLL_NUM_DICE))
     die_type = Die.from_name(match.group(CG_MODIFIED_DICE_ROLL_DIE_TYPE))
     sign = match.group(CG_MODIFIED_DICE_ROLL_SIGN)
-    modifier = match.group(CG_MODIFIED_DICE_ROLL_MODIFIER)
+    modifier = int(match.group(CG_MODIFIED_DICE_ROLL_MODIFIER))
     calculated_modifier = _calculate_modifier(sign, modifier)
     dice = Dice({die_type: num_dice})
     total_roll_value = dice.average_value + calculated_modifier
@@ -180,7 +182,7 @@ def _substitute_modified_stat_atk_roll(
     stat = Ability.from_abbreviation(match.group(CG_MODIFIED_STAT_ATK_ROLL_STAT))
     sign = match.group(CG_MODIFIED_STAT_ATK_ROLL_SIGN)
     modifier = int(match.group(CG_MODIFIED_STAT_ATK_ROLL_MODIFIER))
-    ability_modifier = ability_scores._calculate_modifier(ability_scores.scores[stat])
+    ability_modifier = calculate_ability_modifier(ability_scores.scores[stat])
     calculated_modifer = _calculate_modifier(sign, modifier)
     total_atk_bonus = ability_modifier + proficiency_bonus + calculated_modifer
     return f"+{total_atk_bonus}" if total_atk_bonus >= 0 else str(total_atk_bonus)
@@ -194,7 +196,7 @@ def _substitute_modified_stat_dmg_roll(
     die_type = Die.from_name(match.group(CG_MODIFIED_DICE_ROLL_DIE_TYPE))
     sign = match.group(CG_MODIFIED_STAT_DMG_ROLL_SIGN)
     modifier = int(match.group(CG_MODIFIED_STAT_DMG_ROLL_MODIFIER))
-    ability_modifier = ability_scores._calculate_modifier(ability_scores.scores[stat])
+    ability_modifier = calculate_ability_modifier(ability_scores.scores[stat])
     dice = Dice({die_type: num_dice})
     calculated_modifier = _calculate_modifier(sign, modifier)
     total_modifier = ability_modifier + calculated_modifier
@@ -213,7 +215,7 @@ def _substitute_modified_stat_save_dc(
     stat = Ability.from_abbreviation(match.group(CG_MODIFIED_STAT_SAVE_DC_STAT))
     sign = match.group(CG_MODIFIED_STAT_SAVE_DC_SIGN)
     modifier = int(match.group(CG_MODIFIED_STAT_SAVE_DC_MODIFIER))
-    ability_modifier = ability_scores._calculate_modifier(ability_scores.scores[stat])
+    ability_modifier = calculate_ability_modifier(ability_scores.scores[stat])
     calculated_modifier = _calculate_modifier(sign, modifier)
     save_dc = 8 + proficiency_bonus + ability_modifier + calculated_modifier
     return str(save_dc)

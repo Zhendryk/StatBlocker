@@ -184,9 +184,6 @@
             </item>
            </layout>
           </item>
-          <item row="19" column="1" colspan="3">
-           <widget class="QTextEdit" name="textedit_trait"/>
-          </item>
           <item row="9" column="0" colspan="7">
            <widget class="QLabel" name="_lbl_ability_scores">
             <property name="maximumSize">
@@ -346,12 +343,6 @@
             </property>
            </widget>
           </item>
-          <item row="23" column="1" colspan="3">
-           <widget class="QTextEdit" name="textedit_legendary_action"/>
-          </item>
-          <item row="20" column="1" colspan="3">
-           <widget class="QTextEdit" name="textedit_action"/>
-          </item>
           <item row="12" column="0" colspan="7">
            <widget class="Line" name="_hsep_4">
             <property name="orientation">
@@ -373,13 +364,6 @@
            <widget class="QLabel" name="_lbl_bonus_actions">
             <property name="text">
              <string>Bonus Actions:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1" colspan="4">
-           <widget class="QSpinBox" name="spinbox_challenge_rating">
-            <property name="maximum">
-             <number>30</number>
             </property>
            </widget>
           </item>
@@ -520,9 +504,6 @@
              <number>10</number>
             </property>
            </widget>
-          </item>
-          <item row="22" column="1" colspan="3">
-           <widget class="QTextEdit" name="textedit_reaction"/>
           </item>
           <item row="10" column="4">
            <widget class="QCheckBox" name="checkbox_con_proficient">
@@ -676,9 +657,6 @@
             </property>
            </widget>
           </item>
-          <item row="21" column="1" colspan="3">
-           <widget class="QTextEdit" name="textedit_bonus_action"/>
-          </item>
           <item row="13" column="0">
            <widget class="QLabel" name="_lbl_skills">
             <property name="text">
@@ -705,6 +683,43 @@
              <string>Add</string>
             </property>
            </widget>
+          </item>
+          <item row="19" column="2" colspan="2">
+           <widget class="QTextEdit" name="textedit_trait"/>
+          </item>
+          <item row="19" column="1">
+           <widget class="QLineEdit" name="lineedit_trait_title"/>
+          </item>
+          <item row="1" column="1" colspan="4">
+           <widget class="QDoubleSpinBox" name="spinbox_challenge_rating">
+            <property name="maximum">
+             <double>30.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="20" column="2" colspan="2">
+           <widget class="QTextEdit" name="textedit_action"/>
+          </item>
+          <item row="20" column="1">
+           <widget class="QLineEdit" name="lineedit_action_title"/>
+          </item>
+          <item row="21" column="2" colspan="2">
+           <widget class="QTextEdit" name="textedit_bonus_action"/>
+          </item>
+          <item row="21" column="1">
+           <widget class="QLineEdit" name="lineedit_bonus_action_title"/>
+          </item>
+          <item row="22" column="2" colspan="2">
+           <widget class="QTextEdit" name="textedit_reaction"/>
+          </item>
+          <item row="22" column="1">
+           <widget class="QLineEdit" name="lineedit_reaction_title"/>
+          </item>
+          <item row="23" column="2" colspan="2">
+           <widget class="QTextEdit" name="textedit_legendary_action"/>
+          </item>
+          <item row="23" column="1">
+           <widget class="QLineEdit" name="lineedit_legendary_action_title"/>
           </item>
          </layout>
         </item>
@@ -836,7 +851,14 @@
     <addaction name="actionSave_Statblock"/>
     <addaction name="actionExport_Statblock_to_Markdown"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionMacro_Reference"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOpen_Folder">
@@ -852,6 +874,11 @@
   <action name="actionExport_Statblock_to_Markdown">
    <property name="text">
     <string>Export Statblock to Markdown</string>
+   </property>
+  </action>
+  <action name="actionMacro_Reference">
+   <property name="text">
+    <string>Macro Reference</string>
    </property>
   </action>
  </widget>

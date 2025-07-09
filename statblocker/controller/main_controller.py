@@ -1,7 +1,13 @@
 import sys
 from pathlib import Path
 from PyQt5.QtCore import QObject
-from PyQt5.QtWidgets import QApplication, QListWidgetItem, QFileDialog, QInputDialog
+from PyQt5.QtWidgets import (
+    QApplication,
+    QListWidgetItem,
+    QFileDialog,
+    QInputDialog,
+    QMessageBox,
+)
 from statblocker.data.db import MM2024DB, MM2024DBColumn, OperationType
 from statblocker.view.main_view import MainView
 from statblocker.data.stat_block import StatBlock
@@ -33,6 +39,9 @@ class MainController(QObject):
         self.view.deleteStatblock.connect(self._handler_delete_statblock)
         self.view.ui.btn_open_folder.pressed.connect(self._handler_open_folder)
         self.view.ui.actionOpen_Folder.triggered.connect(self._handler_open_folder)
+        self.view.ui.actionMacro_Reference.triggered.connect(
+            self._handler_show_macro_reference
+        )
 
     def _handler_open_folder(self) -> None:
         selected_folder = QFileDialog.getExistingDirectory(
@@ -243,6 +252,18 @@ class MainController(QObject):
         )
         statblock_filepath.unlink(missing_ok=True)
         print(f"Deleted statblock: {statblock_filepath}")
+
+    def _handler_show_macro_reference(self) -> None:
+        reference_text = """
+[MON]: Shows the monster's name.
+[CHA]: Shows the monster's charisma modifier.
+[3D6]: Computes 3d6.
+[STR ATK]: Calculates the modifier to the monster's attack roll for a strength-based attack.
+[DEX 2D8]: Calculates the damage roll for a dexterity-based attack with damage dice 2d8.
+[WIS SAVE]: Calculates the save DC vs the monster's wisdom.
+[3D6 + 1], [STR ATK - 2], [WIS SAVE + 3]: Adds a modifier to the given values.
+"""
+        QMessageBox.information(self.view, "Macro Reference", reference_text)
 
     def run(self) -> None:
         self.view.show()
