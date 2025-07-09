@@ -46,8 +46,8 @@ class MainController(QObject):
             self._handler_save_statblock_pressed
         )
         self.view.ui.actionOpen_Folder.triggered.connect(self._handler_open_folder)
-        self.view.ui.actionMacro_Reference.triggered.connect(
-            self._handler_show_macro_reference
+        self.view.ui.action_markdown_reference.triggered.connect(
+            self._handler_show_markdown_reference
         )
         self.view.ui.actionLoad_Trait_Template.triggered.connect(
             self._handler_load_trait_template
@@ -275,10 +275,14 @@ class MainController(QObject):
         statblock_filepath.unlink(missing_ok=True)
         print(f"Deleted statblock: {statblock_filepath}")
 
-    def _handler_show_macro_reference(self) -> None:
+    def _handler_show_markdown_reference(self) -> None:
         reference_window = QMessageBox()
-        reference_window.setWindowTitle("Macro Reference")
+        reference_window.setWindowTitle("Markdown Reference")
         reference_text = """
+The following markdown syntax can be used when creating Traits, Actions, Bonus Actions, Reactions and Legendary Actions:
+<br>
+<br>
+<i>Use _ to italicize and ** to bold.</i>
 <ul>
     <li><b>[MON]:</b> <i>Shows the monster's name.</i></li>
     <li><b>[CHA]:</b> <i>Shows the monster's charisma modifier.</i></li>

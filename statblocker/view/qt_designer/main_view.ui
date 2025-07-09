@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1116</width>
-    <height>1163</height>
+    <height>1234</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -882,7 +882,7 @@
     <property name="title">
      <string>Help</string>
     </property>
-    <addaction name="actionMacro_Reference"/>
+    <addaction name="action_markdown_reference"/>
    </widget>
    <widget class="QMenu" name="menuTemplates">
     <property name="title">
@@ -914,9 +914,9 @@
     <string>Export Statblock to Markdown</string>
    </property>
   </action>
-  <action name="actionMacro_Reference">
+  <action name="action_markdown_reference">
    <property name="text">
-    <string>Macro Reference</string>
+    <string>Markdown Reference</string>
    </property>
   </action>
   <action name="actionLoad_Trait_Template">
