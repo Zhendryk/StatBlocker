@@ -1,0 +1,5 @@
+python -m venv _venv
+cd _venv/Scripts
+python.exe -m pip install --upgrade pip
+python.exe -m pip install -r requirements.txt
+cd ../../

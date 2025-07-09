@@ -1,0 +1,3 @@
+PyQt5==5.15.11
+PyQt5Designer==5.14.1
+jsonpickle==4.1.1

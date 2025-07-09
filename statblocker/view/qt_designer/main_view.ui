@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainView</class>
+ <widget class="QMainWindow" name="MainView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1116</width>
+    <height>1085</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QSplitter" name="_splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="_hl_list_actions">
+          <item>
+           <widget class="QPushButton" name="btn_create_new_statblock">
+            <property name="text">
+             <string>Create New</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_load_statblock">
+            <property name="text">
+             <string>Load</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="listview_available_statblocks"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QFrame" name="_frame_statblock">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QGridLayout" name="_gl_statblock">
+          <item row="20" column="0">
+           <widget class="QLabel" name="_lbl_actions">
+            <property name="text">
+             <string>Actions:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="CheckableComboBox" name="cb_size"/>
+          </item>
+          <item row="7" column="5" colspan="2">
+           <widget class="QLineEdit" name="lineedit_initiative">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="22" column="0">
+           <widget class="QLabel" name="_lbl_reactions">
+            <property name="text">
+             <string>Reactions:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" colspan="6">
+           <widget class="QLineEdit" name="lineedit_name"/>
+          </item>
+          <item row="5" column="2">
+           <widget class="QLabel" name="_lbl_creature_type">
+            <property name="text">
+             <string>Creature Type:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="7">
+           <widget class="Line" name="_hsep_1">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="20" column="4">
+           <widget class="QPushButton" name="btn_add_action">
+            <property name="text">
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
+          <item row="16" column="1" colspan="2">
+           <widget class="QComboBox" name="cb_languages"/>
+          </item>
+          <item row="5" column="5" colspan="2">
+           <widget class="QComboBox" name="cb_alignment"/>
+          </item>
+          <item row="18" column="0" colspan="7">
+           <widget class="Line" name="_hsep_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="_lbl_name">
+            <property name="text">
+             <string>Name:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="0" colspan="7">
+           <widget class="Line" name="_hsep_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="1">
+           <widget class="QSpinBox" name="spinbox_int">
+            <property name="maximum">
+             <number>30</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item row="13" column="1" colspan="2">
+           <widget class="QComboBox" name="cb_skills"/>
+          </item>
+          <item row="11" column="3">
+           <widget class="QSpinBox" name="spinbox_wis">
+            <property name="maximum">
+             <number>30</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QComboBox" name="cb_speed"/>
+          </item>
+          <item row="10" column="3">
+           <widget class="QSpinBox" name="spinbox_dex">
+            <property name="maximum">
+             <number>30</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="4">
+           <widget class="QLabel" name="_lbl_initiative">
+            <property name="text">
+             <string>Initiative:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="2">
+           <widget class="QLabel" name="_lbl_hp">
+            <property name="text">
+             <string>HP:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0" colspan="7">
+           <widget class="QLabel" name="_lbl_ability_scores">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Ability Scores:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="17" column="0" colspan="2">
+           <widget class="QCheckBox" name="checkbox_telepathy">
+            <property name="text">
+             <string>Telepathy:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="1">
+           <widget class="QSpinBox" name="spinbox_str">
+            <property name="maximum">
+             <number>30</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item row="19" column="1" colspan="3">
+           <widget class="QTextEdit" name="textedit_trait"/>
+          </item>
+          <item row="20" column="1" colspan="3">
+           <widget class="QTextEdit" name="textedit_action"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="_lbl_challenge_rating">
+            <property name="text">
+             <string>Challenge Rating:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="17" column="2" colspan="2">
+           <widget class="QSpinBox" name="spinbox_telepathy_range">
+            <property name="maximum">
+             <number>300</number>
+            </property>
+            <property name="singleStep">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="3">
+           <widget class="QPushButton" name="btn_add_speed">
+            <property name="text">
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
+          <item row="19" column="0">
+           <widget class="QLabel" name="_lbl_traits">
+            <property name="text">
+             <string>Traits:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="21" column="0">
+           <widget class="QLabel" name="_lbl_bonus_actions">
+            <property name="text">
+             <string>Bonus Actions:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="5" colspan="2">
+           <widget class="QSpinBox" name="spinbox_cha">
+            <property name="maximum">
+             <number>30</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="_lbl_size">
+            <property name="text">
+             <string>Size:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QSpinBox" name="spinbox_ac">
+            <property name="maximum">
+             <number>50</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item row="17" column="4" colspan="3">
+           <widget class="QLabel" name="_lbl_telepathy_ft">
+            <property name="text">
+             <string>ft.</string>
+            </property>
+           </widget>
+          </item>
+          <item row="15" column="0">
+           <widget class="QLabel" name="_lbl_senses">
+            <property name="text">
+             <string>Senses:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="13" column="0">
+           <widget class="QLabel" name="_lbl_skills">
+            <property name="text">
+             <string>Skills:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="_lbl_speed">
+            <property name="text">
+             <string>Speed:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="_lbl_ac">
+            <property name="text">
+             <string>AC:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0" colspan="7">
+           <widget class="Line" name="_hsep_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="19" column="4">
+           <widget class="QPushButton" name="btn_add_trait">
+            <property name="text">
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
+          <item row="14" column="0">
+           <widget class="QLabel" name="_lbl_immunities">
+            <property name="text">
+             <string>Immunities:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="7">
+           <widget class="Line" name="_hsep_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="16" column="0">
+           <widget class="QLabel" name="_lbl_languages">
+            <property name="text">
+             <string>Languages:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="5" colspan="2">
+           <widget class="QSpinBox" name="spinbox_con">
+            <property name="maximum">
+             <number>30</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="4">
+           <widget class="QLabel" name="_lbl_alignment">
+            <property name="text">
+             <string>Alignment:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="3">
+           <widget class="QLineEdit" name="lineedit_hp">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="3">
+           <widget class="QComboBox" name="cb_creature_type"/>
+          </item>
+          <item row="8" column="2">
+           <widget class="QSpinBox" name="spinbox_speed_range">
+            <property name="maximum">
+             <number>300</number>
+            </property>
+            <property name="singleStep">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="23" column="0">
+           <widget class="QLabel" name="_lbl_legendary_actions">
+            <property name="text">
+             <string>Legendary Actions</string>
+            </property>
+           </widget>
+          </item>
+          <item row="21" column="1" colspan="3">
+           <widget class="QTextEdit" name="textedit_bonus_action"/>
+          </item>
+          <item row="22" column="1" colspan="3">
+           <widget class="QTextEdit" name="textedit_reaction"/>
+          </item>
+          <item row="23" column="1" colspan="3">
+           <widget class="QTextEdit" name="textedit_legendary_action"/>
+          </item>
+          <item row="21" column="4">
+           <widget class="QPushButton" name="btn_add_bonus_action">
+            <property name="text">
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
+          <item row="22" column="4">
+           <widget class="QPushButton" name="btn_add_reaction">
+            <property name="text">
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
+          <item row="23" column="4">
+           <widget class="QPushButton" name="btn_add_legendary_action">
+            <property name="text">
+             <string>Add</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" colspan="4">
+           <widget class="QSpinBox" name="spinbox_challenge_rating">
+            <property name="maximum">
+             <number>30</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="5" colspan="2">
+           <widget class="QCheckBox" name="checkbox_has_lair">
+            <property name="text">
+             <string>Has Lair</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <widget class="QCheckBox" name="checkbox_str_proficient">
+            <property name="text">
+             <string>STR:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="0">
+           <widget class="QCheckBox" name="checkbox_int_proficient">
+            <property name="text">
+             <string>INT:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="2">
+           <widget class="QCheckBox" name="checkbox_dex_proficient">
+            <property name="text">
+             <string>DEX:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="2">
+           <widget class="QCheckBox" name="checkbox_wis_proficient">
+            <property name="text">
+             <string>WIS:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="4">
+           <widget class="QCheckBox" name="checkbox_con_proficient">
+            <property name="text">
+             <string>CON:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="4">
+           <widget class="QCheckBox" name="checkbox_cha_proficient">
+            <property name="text">
+             <string>CHA:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="14" column="3">
+           <layout class="QHBoxLayout" name="_hl_immunities">
+            <item>
+             <widget class="QPushButton" name="btn_vulnerable">
+              <property name="text">
+               <string>Vulnerable</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_resistant">
+              <property name="text">
+               <string>Resistant</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_immune">
+              <property name="text">
+               <string>Immune</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="14" column="1" colspan="2">
+           <widget class="QComboBox" name="cb_immunities"/>
+          </item>
+          <item row="15" column="3">
+           <layout class="QHBoxLayout" name="_hl_senses">
+            <item>
+             <widget class="QSpinBox" name="spinbox_sense_range">
+              <property name="maximum">
+               <number>300</number>
+              </property>
+              <property name="singleStep">
+               <number>5</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="_lbl_senses_ft">
+              <property name="text">
+               <string>ft.</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_add_sense">
+              <property name="text">
+               <string>Add</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="15" column="1" colspan="2">
+           <widget class="QComboBox" name="cb_senses"/>
+          </item>
+          <item row="16" column="3">
+           <layout class="QHBoxLayout" name="_hl_languages">
+            <item>
+             <widget class="QPushButton" name="btn_understands_language">
+              <property name="text">
+               <string>Understands</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_speaks_language">
+              <property name="text">
+               <string>Speaks</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="13" column="3">
+           <layout class="QHBoxLayout" name="_hl_skills">
+            <item>
+             <widget class="QPushButton" name="btn_proficient_skill">
+              <property name="text">
+               <string>Proficient</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btn_expertise_skill">
+              <property name="text">
+               <string>Expertise</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="4" colspan="3">
+           <layout class="QHBoxLayout" name="_hl_treasure">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>80</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Treasure:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="CheckableComboBox" name="cb_treasure"/>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0" colspan="4">
+           <layout class="QHBoxLayout" name="_hl_habitat">
+            <item>
+             <widget class="QLabel" name="_lbl_habitat">
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>80</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Habitat:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="CheckableComboBox" name="cb_habitat"/>
+            </item>
+           </layout>
+          </item>
+          <item row="8" column="4" colspan="3">
+           <widget class="QListWidget" name="listview_speed">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="13" column="4" colspan="3">
+           <widget class="QListWidget" name="listview_skills">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="14" column="4" colspan="3">
+           <widget class="QListWidget" name="listview_immunities">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="15" column="4" colspan="3">
+           <widget class="QListWidget" name="listview_senses">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="16" column="4" colspan="3">
+           <widget class="QListWidget" name="listview_languages">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="19" column="5" colspan="2">
+           <widget class="QListWidget" name="listview_traits"/>
+          </item>
+          <item row="20" column="5" colspan="2">
+           <widget class="QListWidget" name="listview_actions"/>
+          </item>
+          <item row="21" column="5" colspan="2">
+           <widget class="QListWidget" name="listview_bonus_actions"/>
+          </item>
+          <item row="22" column="5" colspan="2">
+           <widget class="QListWidget" name="listview_reactions"/>
+          </item>
+          <item row="23" column="5" colspan="2">
+           <widget class="QListWidget" name="listview_legendary_actions"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="_gb_btns">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>80</height>
+           </size>
+          </property>
+          <property name="title">
+           <string/>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QPushButton" name="btn_save_statblock">
+             <property name="text">
+              <string>Save</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_export_markdown">
+             <property name="text">
+              <string>Export Markdown</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_populate_based_on_cr">
+             <property name="text">
+              <string>Populate Based on CR</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1116</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen_Folder"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_Statblock"/>
+    <addaction name="actionExport_Statblock_to_Markdown"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen_Folder">
+   <property name="text">
+    <string>Open Folder</string>
+   </property>
+  </action>
+  <action name="actionSave_Statblock">
+   <property name="text">
+    <string>Save Statblock</string>
+   </property>
+  </action>
+  <action name="actionExport_Statblock_to_Markdown">
+   <property name="text">
+    <string>Export Statblock to Markdown</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CheckableComboBox</class>
+   <extends>QComboBox</extends>
+   <header>statblocker.widgets.checkable_combobox</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
