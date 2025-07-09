@@ -1,0 +1,504 @@
+﻿Monster Name,CR,AC,Min HP,Max HP,Avg HP,Number of Attacks,Size,Creature Type,STR,DEX,CON,INT,WIS,CHA,Legendary,Swarm
+Aarakocra Aeromancer,4,16,24,109,66,2,Medium,Elemental,10,16,12,13,17,12,0,0
+Aarakocra Skirmisher,0.25,12,4,19,11,1,Medium,Elemental,10,14,12,11,12,11,0,0
+Aboleth,10,17,60,241,150,2,Large,Aberration,21,9,15,18,15,18,1,0
+Air Elemental,5,15,36,145,90,2,Large,Elemental,14,20,14,6,10,6,0,0
+Animal Lord,20,19,204,443,323,2,Medium,Celestial,24,25,20,19,23,22,1,0
+Animated Armor,1,18,12,55,33,2,Medium,Construct,14,11,13,1,3,1,0,0
+Animated Broom,0.25,15,4,25,14,1,Small,Construct,10,17,10,1,5,1,0,0
+Animated Flying Sword,0.25,17,4,25,14,1,Small,Construct,12,15,11,1,5,1,0,0
+Animated Rug of Smothering,2,12,5,50,27,1,Large,Construct,17,14,10,1,3,1,0,0
+Ankheg,2,14,18,73,45,1,Large,Monstrosity,17,11,14,1,13,6,0,0
+Arcanaloth,12,17,81,270,175,3,Medium,Fiend,17,12,14,20,16,17,0,0
+Arch-Hag,21,20,203,464,333,3,Large,Fey,24,15,23,19,19,25,1,0
+Assassin,8,16,45,150,97,3,Medium,Humanoid,11,18,14,16,11,10,0,0
+Awakened Shrub,0,9,3,18,10,1,Small,Plant,3,8,11,10,10,6,0,0
+Awakened Tree,2,13,21,98,59,1,Huge,Plant,19,6,15,10,10,7,0,0
+Axe Beak,0.25,11,6,33,19,1,Large,Monstrosity,14,12,12,2,10,5,0,0
+Giant Axe Beak,5,15,40,129,84,2,Huge,Monstrosity,21,14,19,3,12,5,0,0
+Azer Pyromancer,6,18,52,143,97,2,Medium,Elemental,15,14,16,12,18,13,0,0
+Azer Sentinel,2,17,18,61,39,1,Medium,Elemental,17,12,15,12,13,10,0,0
+Balor,19,19,168,433,300,2,Huge,Fiend,26,15,22,20,16,22,1,0
+Bandit,0.125,12,4,19,11,1,"Medium,Small",Humanoid,11,12,12,10,10,10,0,0
+Bandit Captain,2,15,24,81,52,2,"Medium,Small",Humanoid,15,16,14,14,11,14,0,0
+Bandit Deceiver,7,16,60,201,130,3,"Medium,Small",Humanoid,8,16,14,17,12,16,0,0
+Bandit Crime Lord,11,17,78,261,169,3,"Medium,Small",Humanoid,10,20,14,18,14,15,0,0
+Banshee,4,12,12,97,54,2,Medium,Undead,1,14,10,12,11,17,0,0
+Barbed Devil,5,15,65,156,110,2,Medium,Fiend,16,17,18,12,14,14,0,0
+Barlgura,5,15,40,131,85,3,Large,Fiend,18,15,16,7,14,9,0,0
+Basilisk,3,15,24,81,52,1,Medium,Monstrosity,16,8,15,2,8,7,0,0
+Bearded Devil,3,13,27,90,58,2,Medium,Fiend,16,15,15,9,11,14,0,0
+Behir,11,17,80,257,168,2,Huge,Monstrosity,23,16,18,7,14,12,0,0
+Beholder,13,18,100,281,190,3,Large,Aberration,16,14,18,17,15,17,1,0
+Berserker Commander,8,16,80,193,136,3,"Medium,Small",Humanoid,19,14,19,10,14,9,0,0
+Berserker,2,13,36,99,67,1,"Medium,Small",Humanoid,16,12,17,9,11,9,0,0
+Black Dragon Wyrmling,2,17,12,55,33,2,Medium,Dragon,15,14,13,10,11,13,0,0
+Young Black Dragon,7,18,60,195,127,3,Large,Dragon,19,14,17,12,11,15,0,0
+Adult Black Dragon,14,19,102,289,195,3,Huge,Dragon,23,14,21,14,13,19,1,0
+Ancient Black Dragon,21,22,168,567,367,3,Gargantuan,Dragon,27,14,25,16,15,22,1,0
+Black Pudding,4,7,32,105,68,1,Large,Ooze,16,5,16,1,6,1,0,0
+Twig Blight,0.125,14,2,13,7,1,Small,Plant,6,14,11,4,8,3,0,0
+Needle Blight,0.25,12,6,27,16,1,Medium,Plant,12,12,13,4,8,3,0,0
+Vine Blight,0.5,12,9,30,19,1,Medium,Plant,15,8,14,5,10,3,0,0
+Tree Blight,7,15,60,171,115,3,Huge,Plant,23,10,20,6,10,3,0,0
+Gulthias Blight,16,20,112,417,264,3,Gargantuan,Plant,25,10,22,10,18,12,0,0
+Blink Dog,0.25,13,8,37,22,1,Medium,Fey,12,17,12,10,13,11,0,0
+Blob of Annihilation,23,18,230,667,448,3,Gargantuan,Ooze,27,14,28,10,16,10,1,0
+Blue Dragon Wyrmling,3,17,30,101,65,2,Medium,Dragon,17,10,15,12,11,15,0,0
+Young Blue Dragon,9,18,80,225,152,3,Large,Dragon,21,10,19,14,13,17,0,0
+Adult Blue Dragon,16,19,119,306,212,3,Huge,Dragon,25,10,23,16,15,20,1,0
+Ancient Blue Dragon,23,22,234,729,481,3,Gargantuan,Dragon,29,10,27,18,17,25,1,0
+Bone Devil,9,16,85,238,161,3,Large,Fiend,18,16,18,13,14,16,0,0
+Bone Naga,4,15,20,111,65,2,Large,Undead,15,16,12,16,15,15,0,0
+Brass Dragon Wyrmling,1,15,8,37,22,1,Medium,Dragon,15,10,13,10,11,13,0,0
+Young Brass Dragon,6,17,52,169,110,3,Large,Dragon,19,10,17,12,11,15,0,0
+Adult Brass Dragon,13,18,90,255,172,3,Huge,Dragon,23,10,21,14,13,17,1,0
+Ancient Brass Dragon,20,20,152,513,332,3,Gargantuan,Dragon,27,10,25,16,15,22,1,0
+Bronze Dragon Wyrmling,2,15,18,61,39,2,Medium,Dragon,17,10,15,12,11,15,0,0
+Young Bronze Dragon,8,17,75,210,142,3,Large,Dragon,21,10,19,14,13,17,0,0
+Adult Bronze Dragon,15,18,119,306,212,3,Huge,Dragon,25,10,23,16,15,20,1,0
+Ancient Bronze Dragon,22,22,216,673,444,3,Gargantuan,Dragon,29,10,27,18,17,25,1,0
+Bugbear Stalker,3,15,30,101,65,2,Medium,Fey,17,14,14,11,12,11,0,0
+Bugbear Warrior,1,14,12,55,33,1,Medium,Fey,15,14,13,8,11,9,0,0
+Bulette,5,17,54,135,94,2,Large,Monstrosity,19,11,21,2,10,5,0,0
+Bulette Pup,2,16,24,67,45,1,Medium,Monstrosity,16,8,17,2,10,4,0,0
+Bullywug Bog Sage,4,16,24,81,52,2,Medium,Fey,8,16,14,10,16,12,0,0
+Bullywug Warrior,0.25,15,4,19,11,1,Medium,Fey,12,14,13,7,10,7,0,0
+Cambion,5,19,56,155,105,2,Medium,Fiend,18,18,16,14,12,16,0,0
+Carrion Crawler,2,13,24,79,51,2,Large,Monstrosity,14,13,16,1,12,5,0,0
+Centaur Warden,7,16,42,169,105,2,Large,Fey,18,14,14,9,18,11,0,0
+Centaur Trooper,2,16,18,73,45,2,Large,Fey,18,14,14,9,13,11,0,0
+Chain Devil,8,15,50,121,85,3,Medium,Fiend,18,15,18,11,12,14,0,0
+Chasme,6,15,24,133,78,1,Large,Fiend,15,15,12,11,14,10,0,0
+Chimera,6,14,60,169,114,3,Large,Monstrosity,19,11,19,3,14,10,0,0
+Chuul,4,16,36,117,76,3,Large,Aberration,19,10,16,5,11,5,0,0
+Clay Golem,9,14,65,182,123,3,Large,Construct,20,9,18,3,8,1,0,0
+Cloaker,8,14,28,155,91,3,Large,Aberration,17,15,12,13,14,7,0,0
+Cloud Giant,9,14,112,289,200,2,Huge,Giant,27,10,22,12,16,16,0,0
+Cockatrice Regent,8,15,64,209,136,3,Large,Monstrosity,19,14,16,3,16,5,0,0
+Cockatrice,0.5,11,10,35,22,1,Small,Monstrosity,6,12,12,2,13,5,0,0
+Colossus,25,23,297,810,553,3,Gargantuan,Construct,30,11,30,3,11,8,1,0
+Commoner,0,10,1,8,4,1,"Medium,Small",Humanoid,10,10,10,10,10,10,0,0
+Copper Dragon Wyrmling,1,16,8,37,22,1,Medium,Dragon,15,12,13,14,11,13,0,0
+Young Copper Dragon,7,17,56,183,119,3,Large,Dragon,19,12,17,16,13,15,0,0
+Adult Copper Dragon,14,18,96,273,184,3,Huge,Dragon,23,12,21,18,15,18,1,0
+Ancient Copper Dragon,21,21,168,567,367,3,Gargantuan,Dragon,27,12,25,20,17,22,1,0
+Couatl,4,19,32,89,60,1,Medium,Celestial,16,20,17,18,20,18,0,0
+Crawling Claw,0,12,1,4,2,1,Tiny,Undead,13,14,11,5,10,4,0,0
+Swarm of Crawling Claws,3,12,11,88,49,1,Medium,Undead,14,14,11,5,10,4,0,1
+Cultist,0.125,12,2,17,9,1,"Medium,Small",Humanoid,11,12,10,10,11,10,0,0
+Cultist Fanatic,2,13,16,73,44,1,"Medium,Small",Humanoid,11,14,12,10,14,13,0,0
+Cultist Hierophant,10,16,85,204,144,3,"Medium,Small",Humanoid,14,18,18,13,16,20,0,0
+Aberrant Cultist,8,14,50,225,137,2,"Medium,Small",Humanoid,10,19,12,16,18,15,0,0
+Death Cultist,8,17,75,180,127,3,"Medium,Small",Humanoid,19,12,18,12,16,14,0,0
+Elemental Cultist,8,16,72,199,135,3,"Medium,Small",Humanoid,18,12,16,14,18,12,0,0
+Fiend Cultist,8,16,68,187,127,3,"Medium,Small",Humanoid,19,15,16,12,18,10,0,0
+Cyclops Oracle,10,16,108,307,207,3,Huge,Giant,22,11,20,16,18,10,0,0
+Cyclops Sentry,6,14,72,205,138,2,Huge,Giant,22,11,20,8,6,10,0,0
+Dao,11,18,128,273,200,3,Large,Elemental,23,12,24,12,13,18,0,0
+Darkmantle,0.5,11,10,35,22,1,Small,Aberration,16,12,13,2,10,5,0,0
+Death Dog,1,12,18,61,39,2,Medium,Monstrosity,15,14,14,3,13,6,0,0
+Death Knight,17,20,126,273,199,3,"Medium,Small",Undead,20,11,20,12,16,18,1,0
+Death Knight Aspirant,11,20,105,252,178,3,"Medium,Small",Undead,20,10,18,10,12,16,0,0
+Death Tyrant,14,19,78,313,195,3,Large,Undead,18,14,14,19,15,19,1,0
+Demilich,18,20,72,289,180,3,Tiny,Undead,1,20,10,20,17,20,1,0
+Deva,10,17,135,324,229,2,Medium,Celestial,18,18,18,17,20,20,0,0
+Displacer Beast,3,13,36,117,76,2,Large,Monstrosity,18,15,16,6,12,8,0,0
+Djinni,11,17,133,304,218,3,Large,Elemental,21,15,22,15,16,20,0,0
+Doppelganger,3,14,24,81,52,2,Medium,Monstrosity,11,18,14,11,12,14,0,0
+Dracolich,17,20,126,325,225,3,"Huge,Gargantuan",Undead,25,10,23,19,15,21,1,0
+Dragon Turtle,17,20,138,575,356,3,Gargantuan,Dragon,25,10,20,10,12,12,0,0
+Dretch,0.25,11,8,29,18,1,Small,Fiend,12,11,12,5,8,3,0,0
+Swarm of Dretches,4,12,18,73,45,2,Large,Fiend,14,11,14,5,8,3,0,1
+Drider,6,19,65,182,123,3,Large,Monstrosity,16,19,18,13,16,12,0,0
+Druid,2,13,16,73,44,2,"Medium,Small",Humanoid,10,12,13,12,16,11,0,0
+Dryad,1,16,5,40,22,1,Medium,Fey,10,12,11,14,15,18,0,0
+Earth Elemental,5,17,84,211,147,2,Large,Elemental,20,8,20,5,10,5,0,0
+Efreeti,11,17,136,289,212,3,Large,Elemental,22,12,24,16,15,19,0,0
+Elemental Cataclysm,22,20,180,561,370,2,Gargantuan,Elemental,26,19,27,9,14,9,1,0
+Empyrean Iota,1,13,5,40,22,1,Medium,"Celestial,Fiend",1,14,10,15,16,16,0,0
+Empyrean,23,22,231,462,346,2,Huge,"Celestial,Fiend",30,21,30,21,22,27,1,0
+Erinyes,12,18,105,252,178,3,Medium,Fiend,18,16,18,14,14,18,0,0
+Ettercap,2,13,16,73,44,2,Medium,Monstrosity,14,15,13,7,12,8,0,0
+Ettin,4,12,40,131,85,2,Large,Giant,21,8,17,6,10,8,0,0
+Faerie Dragon Adult,2,15,20,51,35,1,Tiny,Dragon,3,20,13,14,12,16,0,0
+Faerie Dragon Youth,1,13,12,31,21,1,Tiny,Dragon,3,16,12,12,12,14,0,0
+Fire Elemental,5,13,44,143,93,2,Large,Elemental,10,17,16,6,10,7,0,0
+Fire Giant,9,18,91,234,162,2,Huge,Giant,25,9,23,10,14,13,0,0
+Flameskull,4,13,27,54,40,2,Tiny,Undead,1,17,14,16,10,11,0,0
+Flesh Golem,5,9,75,180,127,2,Medium,Construct,19,9,18,6,10,5,0,0
+Flumph,0.125,12,2,13,7,1,Small,Aberration,6,15,10,14,14,11,0,0
+Fomorian,8,14,90,255,172,2,Huge,Giant,23,10,20,9,14,6,0,0
+Frost Giant,8,15,78,221,149,2,Huge,Giant,23,9,21,9,10,12,0,0
+Gas Spore Fungus,0.5,8,1,26,13,1,Large,Plant,5,1,3,1,1,1,0,0
+Shrieker Fungus,0,5,3,24,13,0,Medium,Plant,1,1,10,1,3,1,0,0
+Violet Fungus,0.25,5,4,33,18,2,Medium,Plant,3,1,10,1,3,1,0,0
+Violet Fungus Necrohulk,7,17,65,182,123,2,Large,Plant,19,12,18,7,14,10,0,0
+Galeb Duhr,6,16,78,169,123,1,Medium,Elemental,20,14,20,11,12,11,0,0
+Gargoyle,2,15,36,99,67,2,Medium,Elemental,15,11,16,6,11,7,0,0
+Gelatinous Cube,2,6,36,91,63,1,Large,Ooze,14,3,20,1,6,1,0,0
+Ghast,2,13,8,65,36,1,Medium,Undead,16,17,10,11,10,8,0,0
+Ghast Gravecrawler,6,16,45,150,97,2,Medium,Undead,16,17,14,18,14,8,0,0
+Ghost,4,11,10,81,45,2,Medium,Undead,7,13,10,10,12,17,0,0
+Ghoul,1,12,5,40,22,2,Medium,Undead,13,15,10,7,10,6,0,0
+Lacedon Ghoul,1,12,5,40,22,2,Medium,Undead,13,15,10,7,10,6,0,0
+Gibbering Mouther,2,9,28,77,52,1,Medium,Aberration,10,8,16,3,10,6,0,0
+Githyanki Warrior,3,17,18,81,49,2,Medium,Aberration,15,14,12,13,13,10,0,0
+Githyanki Knight,8,18,54,181,117,3,Medium,Aberration,16,14,15,14,14,15,0,0
+Githyanki Dracomancer,16,18,150,361,255,3,Medium,Aberration,10,16,18,20,16,18,0,0
+Githzerai Monk,2,14,14,63,38,2,Medium,Aberration,12,15,12,13,14,10,0,0
+Githzerai Zerth,6,17,39,130,84,2,Medium,Aberration,13,18,15,16,17,12,0,0
+Githzerai Psion,12,18,78,261,169,3,Medium,Aberration,12,18,15,19,18,14,0,0
+Glabrezu,9,17,108,271,189,3,Large,Fiend,20,15,21,19,17,16,0,0
+Gladiator,5,16,60,165,112,3,"Medium,Small",Humanoid,18,15,16,10,12,15,0,0
+Gnoll Warrior,0.5,15,6,49,27,1,Medium,Fiend,14,12,11,6,10,7,0,0
+Gnoll Pack Lord,2,15,18,81,49,2,Medium,Fiend,16,14,13,8,11,9,0,0
+Gnoll Fang of Yeenoghu,4,14,33,110,71,3,Medium,Fiend,17,15,15,10,11,13,0,0
+Gnoll Demoniac,8,16,72,199,135,2,Medium,Fiend,16,12,17,14,15,17,0,0
+Goblin Minion,0.125,12,2,13,7,1,Small,Fey,8,15,10,10,8,8,0,0
+Goblin Warrior,0.25,15,3,18,10,1,Small,Fey,8,15,10,10,8,8,0,0
+Goblin Boss,1,17,6,37,21,2,Small,Fey,10,15,10,10,8,10,0,0
+Goblin Hexer,3,13,20,71,45,2,Small,Fey,8,16,12,16,10,10,0,0
+Gold Dragon Wyrmling,3,17,32,89,60,2,Medium,Dragon,19,14,17,14,11,16,0,0
+Young Gold Dragon,10,18,102,255,178,3,Large,Dragon,23,14,21,16,13,20,0,0
+Adult Gold Dragon,17,19,144,343,243,3,Huge,Dragon,27,14,25,16,15,24,1,0
+Ancient Gold Dragon,24,22,280,813,546,3,Gargantuan,Dragon,30,14,29,18,17,28,1,0
+Gorgon,5,19,60,169,114,1,Large,Construct,20,11,18,2,12,7,0,0
+Brazen Gorgon,9,19,85,238,161,2,Large,Construct,18,14,19,2,14,7,0,0
+Goristro,17,19,184,437,310,3,Huge,Fiend,25,11,25,6,13,14,0,0
+Gray Ooze,0.5,9,12,33,22,1,Medium,Ooze,12,6,16,1,6,2,0,0
+Psychic Gray Ooze,1,9,20,55,37,1,Medium,Ooze,12,8,16,10,6,2,0,0
+Green Dragon Wyrmling,2,17,14,63,38,2,Medium,Dragon,15,12,13,14,11,13,0,0
+Young Green Dragon,8,18,64,209,136,3,Large,Dragon,19,12,17,16,13,15,0,0
+Adult Green Dragon,15,19,108,307,207,3,Huge,Dragon,23,12,21,18,15,18,1,0
+Ancient Green Dragon,22,21,184,621,402,3,Gargantuan,Dragon,27,12,25,20,17,22,1,0
+Green Hag,3,17,44,121,82,2,Medium,Fey,18,12,16,13,14,14,0,0
+Grell,3,12,20,91,55,2,Medium,Aberration,15,14,13,12,11,9,0,0
+Grick,2,14,12,97,54,2,Medium,Aberration,14,14,11,3,14,5,0,0
+Grick Ancient,7,18,54,217,135,3,Large,Aberration,18,16,15,4,14,9,0,0
+Griffon,2,12,28,91,59,2,Large,Monstrosity,18,15,16,2,13,8,0,0
+Grimlock,0.25,11,4,19,11,1,Medium,Aberration,16,12,12,9,8,6,0,0
+Guardian Naga,10,18,64,209,136,2,Large,Celestial,19,18,16,16,19,18,0,0
+Guard,0.125,16,4,19,11,1,"Medium,Small",Humanoid,13,12,12,10,11,10,0,0
+Guard Captain,4,18,40,111,75,2,"Medium,Small",Humanoid,18,14,16,12,14,13,0,0
+Half-Dragon,5,18,56,155,105,2,Medium,Dragon,19,14,16,10,15,14,0,0
+Harpy,1,11,14,63,38,1,Medium,Monstrosity,12,13,12,7,10,13,0,0
+Hell Hound,3,15,27,90,58,2,Medium,Fiend,17,12,14,6,13,6,0,0
+Helmed Horror,4,20,36,99,67,2,Medium,Construct,18,13,16,10,10,10,0,0
+Hezrou,8,18,90,225,157,3,Large,Fiend,19,17,20,5,12,13,0,0
+Hill Giant,5,13,50,161,105,2,Huge,Giant,21,8,19,5,9,6,0,0
+Hippogriff,1,11,8,45,26,2,Large,Monstrosity,17,13,13,2,12,8,0,0
+Hobgoblin Warrior,0.5,18,4,19,11,1,Medium,Fey,13,12,12,10,10,9,0,0
+Hobgoblin Captain,3,17,27,90,58,2,Medium,Fey,15,14,14,12,10,13,0,0
+Hobgoblin Warlord,6,20,60,165,112,3,Medium,Fey,17,14,16,14,11,15,0,0
+Homunculus,0,13,3,6,4,1,Tiny,Construct,4,15,14,10,10,7,0,0
+Hook Horror,3,15,30,121,75,2,Large,Monstrosity,18,10,15,6,12,7,0,0
+Horned Devil,11,18,114,285,199,3,Large,Fiend,22,17,21,12,16,18,0,0
+Hydra,8,15,96,273,184,5,Huge,Monstrosity,20,12,20,2,10,7,0,0
+Ice Devil,14,18,120,337,228,3,Large,Fiend,21,14,18,18,15,18,0,0
+Imp,1,13,12,31,21,1,Tiny,Fiend,6,17,13,11,12,14,0,0
+Incubus,4,15,24,109,66,2,Medium,Fiend,8,17,13,15,12,20,0,0
+Intellect Devourer,2,12,16,41,28,2,Tiny,Aberration,6,14,13,14,11,10,0,0
+Invisible Stalker,6,14,39,156,97,3,Large,Elemental,16,19,14,10,15,11,0,0
+Iron Golem,16,20,144,361,252,2,Large,Construct,24,9,20,3,11,1,0,0
+Jackalwere,0.5,12,8,29,18,2,Small,Fiend,11,15,12,13,11,10,0,0
+Kenku,0.25,13,3,24,13,1,Medium,Monstrosity,10,16,10,11,10,10,0,0
+Knight,3,18,24,81,52,2,"Medium,Small",Humanoid,16,11,14,11,11,15,0,0
+Questing Knight,12,18,98,307,202,3,"Medium,Small",Humanoid,20,16,16,11,12,18,0,0
+Kobold Warrior,0.125,14,1,14,7,1,Small,Dragon,7,15,9,8,7,8,0,0
+Winged Kobold,0.25,15,1,20,10,1,Small,Dragon,7,16,9,8,7,8,0,0
+Kraken,23,18,234,729,481,3,Gargantuan,Monstrosity,30,11,26,22,18,20,1,0
+Kuo-toa,0.25,13,4,33,18,1,Medium,Aberration,13,10,11,11,10,8,0,0
+Kuo-toa Whip,1,11,21,70,45,1,Medium,Aberration,14,10,14,12,14,11,0,0
+Kuo-toa Monitor,3,13,30,101,65,2,Medium,Aberration,16,10,14,12,14,11,0,0
+Kuo-toa Archpriest,6,13,56,155,105,3,Medium,Aberration,16,14,16,13,16,14,0,0
+Lamia,4,13,39,156,97,2,Large,Fiend,16,13,15,14,15,16,0,0
+Larva,0,9,2,17,9,1,Medium,Fiend,9,9,10,6,10,2,0,0
+Swarm of Larvae,1,13,9,36,22,1,Large,Fiend,14,11,14,6,12,2,0,1
+Lemure,0,9,2,17,9,1,Medium,Fiend,10,5,11,1,11,3,0,0
+Swarm of Lemures,3,12,18,73,45,2,Large,Fiend,14,8,14,1,12,3,0,1
+Lich,21,20,168,463,315,3,Medium,Undead,11,16,16,21,14,16,1,0
+Lizardfolk Geomancer,2,13,12,55,33,2,Medium,Elemental,15,10,13,10,15,8,0,0
+Lizardfolk Sovereign,4,15,36,121,78,2,Medium,Elemental,17,12,15,11,11,15,0,0
+Mage Apprentice,2,15,18,81,49,1,"Medium,Small",Humanoid,8,14,12,16,13,10,0,0
+Mage,6,15,18,145,81,3,"Medium,Small",Humanoid,9,14,11,17,12,11,0,0
+Archmage,12,17,62,279,170,4,"Medium,Small",Humanoid,10,14,12,20,15,16,0,0
+Magmin,0.5,14,6,21,13,1,Small,Elemental,7,15,12,8,11,10,0,0
+Manes,0.125,9,4,15,9,1,Small,Fiend,10,9,13,3,8,4,0,0
+Manes Vaporspawn,1,13,9,30,19,1,Medium,Fiend,14,12,15,5,8,3,0,0
+Manticore,3,14,32,105,68,3,Large,Monstrosity,17,16,17,7,12,8,0,0
+Marid,11,17,153,306,229,3,Large,Elemental,22,12,26,18,17,18,0,0
+Marilith,16,16,126,315,220,7,Large,Fiend,18,20,20,18,16,20,0,0
+Medusa,6,15,68,187,127,3,Medium,Monstrosity,10,17,16,12,13,15,0,0
+Dust Mephit,0.5,12,5,30,17,1,Small,Elemental,5,14,10,9,11,10,0,0
+Ice Mephit,0.5,11,6,37,21,1,Small,Elemental,7,13,10,9,11,12,0,0
+Magma Mephit,0.5,11,8,29,18,1,Small,Elemental,8,12,12,7,10,10,0,0
+Mud Mephit,0.25,11,6,21,13,1,Small,Elemental,8,12,12,9,11,7,0,0
+Smoke Mephit,0.25,12,6,21,13,1,Small,Elemental,6,14,12,10,10,11,0,0
+Steam Mephit,0.25,10,5,30,17,1,Small,Elemental,5,11,10,11,10,12,0,0
+Merfolk Skirmisher,0.125,11,4,19,11,1,Medium,Elemental,10,13,12,11,14,12,0,0
+Merfolk Wavebender,6,14,45,150,97,2,Medium,Elemental,10,18,14,13,19,15,0,0
+Merrow,2,13,18,73,45,2,Large,Monstrosity,18,15,15,8,10,9,0,0
+Mezzoloth,5,18,40,111,75,2,Medium,Fiend,18,11,16,7,14,10,0,0
+Mimic,2,12,27,90,58,1,Medium,Monstrosity,17,12,15,5,13,8,0,0
+Mind Flayer,7,15,36,163,99,1,Medium,Aberration,11,12,12,19,17,17,0,0
+Mind Flayer Arcanist,11,16,52,235,143,3,Medium,Aberration,11,14,13,20,17,17,0,0
+Minotaur of Baphomet,3,14,40,131,85,1,Large,Monstrosity,18,11,16,6,16,9,0,0
+Modron Monodrone,0.125,15,2,9,5,1,Medium,Construct,10,14,12,4,10,5,0,0
+Modron Duodrone,0.25,15,4,19,11,2,Medium,Construct,11,13,12,6,10,7,0,0
+Modron Tridrone,0.5,15,6,27,16,3,Medium,Construct,12,13,12,9,10,9,0,0
+Modron Quadrone,1,16,8,37,22,4,Medium,Construct,12,14,12,10,10,11,0,0
+Modron Pentadrone,2,16,10,55,32,5,Large,Construct,15,14,12,10,10,13,0,0
+Mummy,3,11,27,90,58,3,"Medium,Small",Undead,16,8,15,6,12,12,0,0
+Mummy Lord,15,17,100,275,187,2,"Medium,Small",Undead,18,10,17,11,19,16,1,0
+Myconid Sprout,0,10,1,6,3,1,Small,Plant,8,10,10,8,11,5,0,0
+Myconid Adult,0.5,12,6,27,16,1,Medium,Plant,10,10,12,10,13,7,0,0
+Myconid Spore Servant,1,13,20,55,37,1,"Medium,Small",Plant,16,12,16,2,6,1,0,0
+Myconid Sovereign,2,13,18,73,45,2,Large,Plant,12,10,14,13,15,10,0,0
+Nalfeshnee,13,18,112,257,184,3,Large,Fiend,21,10,22,19,12,15,0,0
+Night Hag,5,17,60,165,112,2,Medium,Fiend,18,15,16,16,14,16,0,0
+Nightmare,3,13,32,105,68,1,Large,Fiend,18,15,16,10,13,15,0,0
+Noble,0.125,15,2,17,9,1,"Medium,Small",Humanoid,11,12,11,12,14,16,0,0
+Noble Prodigy,10,16,54,243,148,3,"Medium,Small",Humanoid,8,16,12,15,14,19,0,0
+Nothic,2,15,24,67,45,2,Medium,Aberration,14,16,16,13,10,8,0,0
+Nycaloth,9,18,80,225,152,2,Large,Fiend,20,11,19,12,10,15,0,0
+Ochre Jelly,2,8,21,84,52,1,Large,Ooze,15,6,14,2,6,1,0,0
+Ogre,2,11,32,105,68,1,Large,Giant,19,8,16,5,7,7,0,0
+Ogrillon Ogre,1,12,21,84,52,1,Large,Giant,17,10,14,7,9,10,0,0
+Oni,7,17,56,183,119,2,Large,Fiend,19,11,16,14,12,15,0,0
+Otyugh,5,14,55,154,104,3,Large,Aberration,16,11,19,6,13,6,0,0
+Owlbear,3,13,28,91,59,2,Large,Monstrosity,20,12,17,3,12,7,0,0
+Primeval Owlbear,7,16,60,193,126,2,Huge,Monstrosity,22,14,19,8,15,7,0,0
+Pegasus,2,12,28,91,59,1,Large,Celestial,18,15,16,10,15,13,0,0
+Performer,0.5,13,10,45,27,1,"Medium,Small",Humanoid,12,16,12,13,14,16,0,0
+Performer Maestro,6,18,51,170,110,3,"Medium,Small",Humanoid,12,18,14,13,14,19,0,0
+Performer Legend,10,20,75,250,162,3,"Medium,Small",Humanoid,12,20,14,15,16,20,0,0
+Peryton,2,13,12,55,33,2,Medium,Monstrosity,16,12,13,9,12,10,0,0
+Phase Spider,3,14,14,77,45,2,Large,Monstrosity,15,16,12,6,10,6,0,0
+Piercer,0.5,15,12,33,22,1,Medium,Aberration,13,13,16,1,7,3,0,0
+Pirate,1,14,12,55,33,2,"Medium,Small",Humanoid,10,16,12,8,12,14,0,0
+Pirate Captain,6,17,39,130,84,3,"Medium,Small",Humanoid,10,18,14,10,14,17,0,0
+Pirate Admiral,12,20,84,281,182,3,"Medium,Small",Humanoid,14,22,14,12,14,19,0,0
+Pit Fiend,20,21,216,459,337,4,Large,Fiend,26,14,24,22,18,24,1,0
+Pixie,0.25,15,1,18,9,1,Tiny,Fey,2,20,8,10,14,15,0,0
+Pixie Wonderbringer,5,15,24,97,60,2,Tiny,Fey,2,20,10,11,14,18,0,0
+Planetar,16,19,168,357,262,3,Large,Celestial,24,20,24,19,22,25,0,0
+Poltergeist,2,12,5,40,22,2,"Medium,Small",Undead,1,14,11,10,10,14,0,0
+Priest Acolyte,0.25,13,4,19,11,1,"Medium,Small",Humanoid,14,10,12,10,14,11,0,0
+Priest,2,13,14,63,38,2,"Medium,Small",Humanoid,16,10,12,13,16,13,0,0
+Archpriest,12,16,128,353,240,3,"Medium,Small",Humanoid,16,12,17,14,21,14,0,0
+Pseudodragon,0.25,14,6,15,10,2,Tiny,Dragon,6,15,13,10,12,10,0,0
+Purple Worm,15,18,105,390,247,2,Gargantuan,Monstrosity,28,7,22,1,8,4,0,0
+Quaggoth,2,13,24,67,45,2,Medium,Monstrosity,17,12,16,6,12,7,0,0
+Quaggoth Thonot,3,15,36,99,67,2,Medium,Monstrosity,17,12,16,6,14,7,0,0
+Quasit,1,13,10,41,25,1,Tiny,Fiend,5,17,10,7,10,10,0,0
+Rakshasa,13,17,130,313,221,3,Medium,Fiend,14,17,18,13,16,20,0,0
+Red Dragon Wyrmling,4,17,40,111,75,2,Medium,Dragon,19,10,17,12,11,15,0,0
+Young Red Dragon,10,18,102,255,178,3,Large,Dragon,23,10,21,14,11,19,0,0
+Adult Red Dragon,17,19,152,361,256,3,Huge,Dragon,27,10,25,16,13,23,1,0
+Ancient Red Dragon,24,22,260,755,507,3,Gargantuan,Dragon,30,10,29,18,15,27,1,0
+Young Remorhaze,5,14,44,143,93,1,Large,Monstrosity,18,13,17,3,10,4,0,0
+Remorhaze,11,17,102,289,195,1,Huge,Monstrosity,24,13,21,4,10,5,0,0
+Revenant,5,13,75,180,127,3,Medium,Undead,18,14,18,13,16,18,0,0
+Graveyard Revenant,7,14,84,239,161,2,Huge,Undead,20,14,20,13,16,18,0,0
+Haunting Revenant,10,20,70,337,203,3,Gargantuan,Undead,20,12,18,16,18,20,0,0
+Roc,11,15,96,401,248,2,Gargantuan,Monstrosity,28,10,20,3,10,9,0,0
+Roper,5,20,44,143,93,5,Large,Aberration,18,8,17,7,16,6,0,0
+Rust Monster,0.5,14,12,55,33,3,Medium,Monstrosity,13,12,13,2,13,6,0,0
+Sahuagin Warrior,0.5,12,8,37,22,2,Medium,Fiend,13,11,12,12,13,9,0,0
+Sahuagin Priest,2,12,14,63,38,2,Medium,Fiend,13,11,12,12,14,13,0,0
+Sahuagin Baron,5,16,36,117,76,3,Large,Fiend,19,15,16,14,13,17,0,0
+Salamander Fire Snake,1,14,6,49,27,1,Medium,Elemental,12,14,11,7,10,8,0,0
+Salamander,5,15,36,145,90,2,Large,Elemental,18,14,15,11,10,12,0,0
+Salamander Inferno Master,15,18,135,378,256,2,Large,Elemental,24,16,18,14,10,20,0,0
+Satyr,0.5,13,7,56,31,1,Medium,Fey,12,16,11,12,10,14,0,0
+Satyr Revelmaster,6,17,30,135,82,3,Medium,Fey,12,18,12,12,14,17,0,0
+Scarecrow,1,11,6,49,27,1,Medium,Construct,11,13,11,10,10,13,0,0
+Scout,0.5,13,6,27,16,2,"Medium,Small",Humanoid,11,14,12,11,13,11,0,0
+Scout Captain,3,15,24,109,66,2,"Medium,Small",Humanoid,11,16,12,14,15,11,0,0
+Sea Hag,2,14,28,77,52,1,Medium,Fey,16,13,16,12,12,13,0,0
+Shadow,0.5,12,10,45,27,1,Medium,Undead,6,14,13,6,10,8,0,0
+Shadow Demon,4,14,24,109,66,1,Medium,Fiend,1,17,12,14,13,14,0,0
+Juvenile Shadow Dragon,4,15,24,67,45,2,Medium,Dragon,17,14,17,12,11,15,0,0
+Shadow Dragon,13,16,90,289,189,3,"Large,Huge",Dragon,21,19,18,14,12,18,1,0
+Shambling Mound,5,15,52,169,110,3,Large,Plant,18,8,16,5,10,5,0,0
+Shield Guardian,7,17,75,210,142,2,Large,Construct,18,8,18,7,10,3,0,0
+Silver Dragon Wyrmling,2,17,24,67,45,2,Medium,Dragon,19,10,17,12,11,15,0,0
+Young Silver Dragon,9,18,96,241,168,3,Large,Dragon,23,10,21,14,11,19,0,0
+Adult Silver Dragon,16,19,128,305,216,3,Huge,Dragon,27,10,25,16,13,22,1,0
+Ancient Silver Dragon,23,22,240,697,468,3,Gargantuan,Dragon,30,10,29,18,15,26,1,0
+Skeleton,0.25,14,6,21,13,1,Medium,Undead,10,16,15,6,8,5,0,0
+Warhorse Skeleton,0.5,13,9,36,22,1,Large,Undead,18,12,15,2,8,5,0,0
+Minotaur Skeleton,2,12,18,73,45,1,Large,Undead,18,11,15,6,8,5,0,0
+Flaming Skeleton,3,15,30,101,65,2,Medium,Undead,10,14,15,10,15,8,0,0
+Slaad Tadpole,0.125,12,3,12,7,1,Tiny,Aberration,7,15,10,3,5,3,0,0
+Red Slaad,5,14,44,143,93,3,Large,Aberration,16,12,16,6,6,7,0,0
+Blue Slaad,7,15,70,197,133,3,Large,Aberration,20,15,18,7,7,9,0,0
+Green Slaad,8,16,68,221,144,3,Large,Aberration,16,15,16,11,8,18,0,0
+Gray Slaad,9,18,80,221,150,2,Medium,Aberration,19,17,16,13,8,18,0,0
+Death Slaad,10,18,105,252,178,2,Medium,Aberration,20,15,19,15,10,19,0,0
+Solar,21,21,198,397,297,2,Large,Celestial,26,22,26,25,25,30,1,0
+Spectator,3,14,21,70,45,2,Medium,Aberration,8,14,14,13,14,11,0,0
+Specter,1,12,5,40,22,1,Medium,Undead,1,14,11,10,10,11,0,0
+Sphinx of Wonder,1,13,14,35,24,1,Tiny,Celestial,6,17,13,15,12,11,0,0
+Sphinx of Secrets,8,16,64,209,136,3,Large,Celestial,18,15,16,18,18,18,0,0
+Sphinx of Lore,11,17,80,261,170,3,Large,Celestial,18,15,16,18,18,18,1,0
+Sphinx of Valor,17,17,114,285,199,3,Large,Celestial,22,10,20,16,23,18,1,0
+Spy,1,12,6,49,27,1,"Medium,Small",Humanoid,10,15,10,12,14,16,0,0
+Spy Master,10,19,50,225,137,3,"Medium,Small",Humanoid,10,20,12,18,16,16,0,0
+Spined Devil,2,13,20,71,45,2,Small,Fiend,10,15,12,11,14,8,0,0
+Spirit Naga,8,17,54,217,135,3,Large,Fiend,18,17,14,16,15,16,0,0
+Sprite,0.25,15,4,17,10,1,Tiny,Fey,3,18,10,14,13,11,0,0
+Stirge,0.125,13,2,9,5,1,Tiny,Monstrosity,4,16,11,2,8,6,0,0
+Swarm of Stirges,2,14,8,65,36,1,Medium,Monstrosity,4,16,11,2,8,6,0,1
+Stone Giant,7,17,66,187,126,2,Huge,Giant,23,15,20,10,12,9,0,0
+Stone Golem,10,18,126,315,220,2,Large,Construct,22,9,20,3,11,1,0,0
+Storm Giant,13,16,120,341,230,2,Huge,Giant,29,14,20,16,20,18,0,0
+Succubus,4,15,26,117,71,2,Medium,Fiend,8,17,13,15,12,20,0,0
+Tarrasque,30,25,374,1021,697,4,Gargantuan,Monstrosity,30,11,30,3,11,11,1,0
+Thri-keen Marauder,1,15,12,55,33,2,Medium,Monstrosity,12,15,13,8,12,7,0,0
+Thri-keen Psion,8,16,69,230,149,3,Medium,Monstrosity,18,15,14,19,12,11,0,0
+Tough,0.5,12,15,50,32,1,"Medium,Small",Humanoid,15,12,14,10,10,11,0,0
+Tough Boss,4,16,44,121,82,2,"Medium,Small",Humanoid,17,14,16,11,10,11,0,0
+Treant,9,16,72,205,138,2,Huge,Plant,23,8,21,12,16,12,0,0
+Troglodyte,0.25,11,6,21,13,1,Medium,Monstrosity,14,10,14,6,10,6,0,0
+Troll,5,15,54,135,94,3,Large,Giant,18,13,20,7,9,7,0,0
+Troll Limb,0.5,13,4,25,14,1,Small,Giant,18,12,10,1,9,1,0,0
+Ultroloth,13,19,130,313,221,3,Medium,Fiend,19,16,18,19,15,18,0,0
+Umber Hulk,5,18,44,143,93,3,Large,Monstrosity,20,13,16,9,10,10,0,0
+Unicorn,5,12,39,156,97,2,Large,Celestial,18,14,15,11,17,16,0,0
+Vampire Familiar,3,15,30,101,65,2,"Medium,Small",Humanoid,17,16,15,10,10,14,0,0
+Vampire Spawn,5,16,48,133,90,3,"Medium,Small",Undead,16,16,16,11,10,12,0,0
+Vampire Nightbringer,8,16,76,209,142,2,"Medium,Small",Undead,16,18,16,13,14,15,0,0
+Vampire,13,16,115,276,195,3,"Medium,Small",Undead,18,18,18,17,15,18,1,0
+Vampire Umbral Lord,15,16,110,265,187,2,"Medium,Small",Undead,20,18,18,19,16,21,1,0
+Vrock,6,15,80,225,152,2,Large,Fiend,17,15,18,8,13,8,0,0
+Warrior Infantry,0.125,13,2,17,9,1,"Medium,Small",Humanoid,13,11,11,8,11,8,0,0
+Warrior Veteran,3,17,30,101,65,2,"Medium,Small",Humanoid,16,13,14,10,11,10,0,0
+Warrior Commander,10,18,95,228,161,3,"Medium,Small",Humanoid,21,20,18,14,16,14,0,0
+Water Elemental,5,14,60,169,114,2,Large,Elemental,18,14,18,5,10,8,0,0
+Water Weird,3,13,20,111,65,1,Large,Elemental,17,16,13,11,10,10,0,0
+Werebear,5,15,72,199,135,2,"Medium,Small",Monstrosity,19,10,17,11,12,12,0,0
+Wereboar,4,15,45,150,97,2,"Medium,Small",Monstrosity,17,10,15,10,11,8,0,0
+Wererat,2,13,22,99,60,2,"Medium,Small",Monstrosity,10,16,12,11,10,8,0,0
+Weretiger,4,12,64,177,120,2,"Medium,Small",Monstrosity,17,15,16,10,13,11,0,0
+Werewolf,3,15,33,110,71,2,"Medium,Small",Monstrosity,16,14,14,10,11,10,0,0
+White Dragon Wyrmling,2,16,15,50,32,2,Medium,Dragon,14,10,14,5,10,11,0,0
+Young White Dragon,6,17,65,182,123,3,Large,Dragon,18,10,18,6,11,12,0,0
+Adult White Dragon,13,18,112,289,200,3,Huge,Dragon,22,10,22,8,12,12,1,0
+Ancient White Dragon,20,20,162,505,333,3,Gargantuan,Dragon,26,10,26,10,13,14,1,0
+Wight,3,14,44,121,82,2,Medium,Undead,15,14,16,10,13,15,0,0
+Will-O'-Wisp,2,19,11,44,27,1,Tiny,Undead,1,28,10,13,14,11,0,0
+Winter Wolf,3,13,30,121,75,1,Large,Monstrosity,18,13,14,7,12,8,0,0
+Worg,0.5,13,8,65,36,1,Large,Fey,16,13,13,7,11,8,0,0
+Dire Worg,10,16,70,225,147,3,Huge,Fey,22,14,18,7,16,8,0,0
+Wraith,5,13,36,99,67,1,"Medium,Small",Undead,6,16,16,12,14,15,0,0
+Wyvern,6,14,60,195,127,2,Large,Dragon,19,10,16,5,12,6,0,0
+Xorn,5,19,56,113,84,4,Medium,Elemental,17,10,22,11,10,11,0,0
+Yeti,3,12,24,79,51,3,Large,Monstrosity,18,13,16,8,12,7,0,0
+Abominable Yeti,9,15,77,198,137,3,Huge,Monstrosity,24,10,22,9,13,9,0,0
+Yochlol,10,15,90,217,153,2,Medium,Fiend,15,19,18,13,15,17,0,0
+Yuan-ti Infiltrator,1,11,9,72,40,2,Medium,Monstrosity,11,12,11,13,14,12,0,0
+Yuan-ti Malison (Type 1),3,12,24,109,66,2,Medium,Monstrosity,16,14,13,14,16,12,0,0
+Yuan-ti Malison (Type 2),3,12,24,109,66,2,Medium,Monstrosity,16,14,13,14,16,12,0,0
+Yuan-ti Malison (Type 3),3,12,24,109,66,2,Medium,Monstrosity,16,14,13,14,16,12,0,0
+Yuan-ti Abomination,7,15,60,195,127,2,Large,Monstrosity,19,16,17,17,18,15,0,0
+Zombie,0.25,8,8,23,15,1,Medium,Undead,13,6,16,3,6,5,0,0
+Ogre Zombie,2,8,45,126,85,1,Large,Undead,19,6,18,3,6,5,0,0
+Beholder Zombie,5,15,44,143,93,2,Large,Undead,14,8,16,3,8,5,0,0
+Allosaurus,2,13,24,79,51,1,Large,Beast,19,13,17,2,12,5,0,0
+Ankylosaurus,3,15,24,113,68,2,Huge,Beast,19,11,15,2,12,5,0,0
+Ape,0.5,12,9,30,19,2,Medium,Beast,16,14,14,6,12,7,0,0
+Archelon,4,17,24,157,90,2,Huge,Beast,18,16,13,4,14,6,0,0
+Baboon,0,12,1,6,3,1,Small,Beast,8,14,11,4,12,6,0,0
+Badger,0,11,4,7,5,1,Tiny,Beast,10,11,16,2,12,5,0,0
+Bat,0,12,1,2,1,1,Tiny,Beast,2,15,8,2,12,4,0,0
+Black Bear,0.5,11,9,30,19,2,Medium,Beast,15,12,14,2,12,7,0,0
+Blood Hawk,0.125,12,2,13,7,1,Small,Beast,6,14,10,3,14,5,0,0
+Boar,0.25,11,6,21,13,1,Medium,Beast,13,11,14,2,9,5,0,0
+Brown Bear,1,11,9,36,22,2,Large,Beast,17,12,15,2,13,7,0,0
+Camel,0.125,10,8,27,17,1,Large,Beast,15,8,17,2,11,5,0,0
+Cat,0,12,1,4,2,1,Tiny,Beast,3,15,10,3,12,7,0,0
+Constrictor Snake,0.25,13,4,23,13,1,Large,Beast,15,14,12,1,10,3,0,0
+Crab,0,11,2,5,3,1,Tiny,Beast,6,11,12,1,8,2,0,0
+Crocodile,0.5,12,4,23,13,1,Large,Beast,15,10,13,2,10,5,0,0
+Deer,0,13,1,8,4,1,Medium,Beast,11,16,11,2,14,5,0,0
+Dire Wolf,1,14,9,36,22,1,Large,Beast,17,15,15,3,12,7,0,0
+Draft Horse,0.25,10,6,25,15,1,Large,Beast,18,10,15,2,11,7,0,0
+Eagle,0,12,2,7,4,1,Small,Beast,6,15,12,2,14,7,0,0
+Elephant,4,12,32,121,76,2,Huge,Beast,22,9,17,3,11,6,0,0
+Elk,0.25,10,2,21,11,1,Large,Beast,16,10,11,2,10,6,0,0
+Flying Snake,0.125,14,2,9,5,1,Tiny,Monstrosity,4,15,11,2,12,5,0,0
+Frog,0,11,1,2,1,1,Tiny,Beast,1,13,8,1,8,3,0,0
+Giant Ape,7,12,80,257,168,2,Huge,Beast,23,14,18,5,12,7,0,0
+Giant Badger,0.25,13,8,23,15,1,Medium,Beast,13,10,17,2,12,5,0,0
+Giant Bat,0.25,13,4,41,22,1,Large,Beast,15,16,11,2,12,6,0,0
+Giant Boar,2,13,20,65,42,1,Large,Beast,17,10,16,2,7,5,0,0
+Giant Centipede,0.25,14,4,15,9,1,Small,Beast,5,14,12,1,7,3,0,0
+Giant Constrictor Snake,2,12,16,105,60,2,Huge,Beast,19,14,12,1,10,3,0,0
+Giant Crab,0.125,15,3,24,13,1,Medium,Beast,13,13,11,1,9,3,0,0
+Giant Crocodile,5,14,36,135,85,2,Huge,Beast,21,9,17,2,10,7,0,0
+Giant Eagle,1,13,8,45,26,2,Large,Celestial,16,17,13,8,14,10,0,0
+Giant Elk,2,14,15,70,42,1,Huge,Celestial,19,18,14,7,14,10,0,0
+Giant Fire Beetle,0,13,2,7,4,1,Small,Beast,8,10,12,1,7,3,0,0
+Giant Frog,0.25,11,4,33,18,1,Medium,Beast,12,13,11,2,10,3,0,0
+Giant Goat,0.5,11,6,33,19,1,Large,Beast,17,13,12,3,12,6,0,0
+Giant Hyena,1,12,18,73,45,1,Large,Beast,16,14,14,2,12,7,0,0
+Giant Lizard,0.25,12,6,33,19,1,Large,Beast,15,12,13,2,10,5,0,0
+Giant Octopus,1,11,14,77,45,1,Large,Beast,17,13,13,5,10,4,0,0
+Giant Owl,0.25,12,6,33,19,1,Large,Celestial,13,15,12,10,14,10,0,0
+Giant Rat,0.125,13,2,13,7,1,Small,Beast,7,16,11,2,10,4,0,0
+Giant Scorpion,3,15,21,84,52,3,Large,Beast,16,13,15,1,9,3,0,0
+Giant Seahorse,0.5,14,3,30,16,1,Large,Beast,15,12,11,2,12,5,0,0
+Giant Shark,5,13,48,137,92,2,Huge,Beast,23,11,21,1,10,5,0,0
+Giant Spider,1,14,8,45,26,1,Large,Beast,14,16,12,2,11,4,0,0
+Giant Squid,6,12,32,209,120,2,Huge,Beast,23,14,12,5,11,4,0,0
+Giant Toad,1,11,12,67,39,1,Large,Beast,15,13,13,2,10,3,0,0
+Giant Venemous Snake,0.25,14,4,19,11,1,Medium,Beast,10,18,13,2,10,3,0,0
+Giant Vulture,1,10,12,39,25,1,Large,Monstrosity,15,10,16,6,12,7,0,0
+Giant Wasp,0.5,13,5,40,22,1,Medium,Beast,10,14,10,1,10,3,0,0
+Giant Weasel,0.125,13,2,17,9,1,Medium,Beast,11,17,10,4,12,5,0,0
+Giant Wolf Spider,0.25,13,4,19,11,1,Medium,Beast,12,16,13,3,12,4,0,0
+Goat,0,10,1,8,4,1,Medium,Beast,11,10,11,2,10,5,0,0
+Hawk,0,13,1,2,1,1,Tiny,Beast,5,16,8,2,14,6,0,0
+Hippopotamus,4,14,33,132,82,2,Large,Beast,21,7,15,2,12,4,0,0
+Hunter Shark,2,12,18,73,45,1,Large,Beast,18,14,15,1,10,4,0,0
+Hyena,0,11,2,9,5,1,Medium,Beast,11,13,12,2,12,5,0,0
+Jackal,0,12,1,6,3,1,Small,Beast,8,15,11,3,12,6,0,0
+Killer Whale,3,12,24,157,90,1,Huge,Beast,19,14,13,3,12,7,0,0
+Lion,1,12,4,41,22,2,Large,Beast,17,15,11,3,12,8,0,0
+Lizard,0,10,1,4,2,1,Tiny,Beast,2,11,10,1,8,3,0,0
+Mammoth,6,13,66,187,126,2,Huge,Beast,24,9,21,3,11,6,0,0
+Mastiff,0.125,12,2,9,5,1,Medium,Beast,13,14,12,3,12,7,0,0
+Mule,0.125,10,4,19,11,1,Medium,Beast,14,10,13,2,10,5,0,0
+Octopus,0,12,1,6,3,1,Small,Beast,4,15,11,3,10,4,0,0
+Owl,0,11,1,2,1,1,Tiny,Beast,3,13,8,2,12,7,0,0
+Panther,0.25,13,3,24,13,1,Medium,Beast,14,16,10,3,14,7,0,0
+Piranha,0,13,1,2,1,1,Tiny,Beast,2,16,9,1,7,2,0,0
+Plesiosaurus,2,13,32,105,68,1,Large,Beast,18,15,16,2,12,5,0,0
+Polar Bear,2,12,20,65,42,2,Large,Beast,20,14,16,2,13,7,0,0
+Pony,0.125,10,4,19,11,1,Medium,Beast,15,10,13,2,11,7,0,0
+Pteranodon,0.25,13,3,24,13,1,Medium,Beast,12,15,10,2,9,5,0,0
+Rat,0,10,1,2,1,1,Tiny,Beast,2,11,9,2,10,4,0,0
+Raven,0,12,1,4,2,1,Tiny,Beast,2,14,10,5,13,6,0,0
+Reef Shark,0.5,12,8,37,22,1,Medium,Beast,14,15,13,1,10,4,0,0
+Rhinoceros,2,13,18,73,45,1,Large,Beast,21,8,15,2,12,6,0,0
+Riding Horse,0.25,11,4,23,13,1,Large,Beast,16,13,12,2,11,7,0,0
+Saber-Toothed Tiger,2,13,21,84,52,2,Large,Beast,18,17,15,3,12,8,0,0
+Scorpion,0,11,1,2,1,1,Tiny,Beast,2,11,8,1,8,2,0,0
+Seahorse,0,12,1,2,1,0,Tiny,Beast,1,12,8,1,10,2,0,0
+Spider,0,12,1,2,1,1,Tiny,Beast,2,14,8,1,10,2,0,0
+Swarm of Bats,0.25,12,2,21,11,1,Large,Beast,5,15,10,2,12,4,0,1
+Swarm of Insects,0.5,11,9,30,19,1,Medium,Beast,3,13,14,1,7,1,0,1
+Swarm of Piranhas,1,13,1,56,28,1,Medium,Beast,13,16,9,1,7,2,0,1
+Swarm of Rats,0.25,10,1,28,14,1,Medium,Beast,9,11,9,2,10,3,0,1
+Swarm of Ravens,0.25,12,4,19,11,1,Medium,Beast,6,14,12,5,12,6,0,1
+Swarm of Venemous Snakes,2,14,8,65,36,1,Medium,Beast,8,18,11,1,10,3,0,1
+Tiger,1,13,12,49,30,1,Large,Beast,17,16,14,3,12,8,0,0
+Triceratops,5,14,48,181,114,2,Huge,Beast,22,9,17,2,11,5,0,0
+Tyrannosaurus Rex,8,13,65,208,136,2,Huge,Beast,25,10,19,2,12,9,0,0
+Venemous Snake,0.125,12,2,9,5,1,Tiny,Beast,2,15,11,1,10,3,0,0
+Vulture,0,10,2,9,5,1,Medium,Beast,7,10,13,2,12,4,0,0
+Warhorse,0.5,11,6,33,19,1,Large,Beast,18,12,13,2,12,7,0,0
+Weasel,0,13,1,2,1,1,Tiny,Beast,3,16,8,2,12,3,0,0
+Wolf,0.25,12,4,19,11,1,Medium,Beast,14,15,12,3,12,6,0,0

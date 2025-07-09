@@ -34,6 +34,7 @@ from statblocker.data.ability_scores import AbilityScores
 from statblocker.data.skills import Skills
 from statblocker.data.senses import Senses
 from statblocker.data.languages import Languages
+from statblocker.data.db import MM2024DBColumn, OperationType
 from statblocker.data.action import (
     Trait,
     Action,
@@ -87,6 +88,10 @@ class MainView(QMainWindow):
         self.ui.cb_skills.addItems([s.display_name for s in Skill])
         self.ui.cb_speed.clear()
         self.ui.cb_speed.addItems([s.display_name for s in SpeedType])
+        self.ui.cb_db_column.clear()
+        self.ui.cb_db_column.addItems([c.column_str for c in MM2024DBColumn])
+        self.ui.cb_db_operation.clear()
+        self.ui.cb_db_operation.addItems([o.display_name for o in OperationType])
 
     def _init_listwidgets(self) -> None:
         self.ui.listview_speed.clear()
