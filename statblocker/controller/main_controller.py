@@ -1,6 +1,6 @@
 import sys
 from pathlib import Path
-from PyQt5.QtCore import QObject
+from PyQt5.QtCore import QObject, Qt
 from PyQt5.QtWidgets import (
     QApplication,
     QListWidgetItem,
@@ -39,6 +39,12 @@ class MainController(QObject):
         self.view.ui.btn_db_query.pressed.connect(self._handler_query_db)
         self.view.deleteStatblock.connect(self._handler_delete_statblock)
         self.view.ui.btn_open_folder.pressed.connect(self._handler_open_folder)
+        self.view.ui.actionExport_Statblock_to_Markdown.triggered.connect(
+            self._handler_export_markdown_pressed
+        )
+        self.view.ui.actionSave_Statblock.triggered.connect(
+            self._handler_save_statblock_pressed
+        )
         self.view.ui.actionOpen_Folder.triggered.connect(self._handler_open_folder)
         self.view.ui.actionMacro_Reference.triggered.connect(
             self._handler_show_macro_reference
@@ -270,16 +276,23 @@ class MainController(QObject):
         print(f"Deleted statblock: {statblock_filepath}")
 
     def _handler_show_macro_reference(self) -> None:
+        reference_window = QMessageBox()
+        reference_window.setWindowTitle("Macro Reference")
         reference_text = """
-[MON]: Shows the monster's name.
-[CHA]: Shows the monster's charisma modifier.
-[3D6]: Computes 3d6.
-[STR ATK]: Calculates the modifier to the monster's attack roll for a strength-based attack.
-[DEX 2D8]: Calculates the damage roll for a dexterity-based attack with damage dice 2d8.
-[WIS SAVE]: Calculates the save DC vs the monster's wisdom.
-[3D6 + 1], [STR ATK - 2], [WIS SAVE + 3]: Adds a modifier to the given values.
+<ul>
+    <li><b>[MON]:</b> <i>Shows the monster's name.</i></li>
+    <li><b>[CHA]:</b> <i>Shows the monster's charisma modifier.</i></li>
+    <li><b>[3D6]:</b> <i>Computes 3d6.</i></li>
+    <li><b>[STR ATK]:</b> <i>Calculates the modifier to the monster's attack roll for a strength-based attack.</i></li>
+    <li><b>[DEX 2D8]:</b> <i>Calculates the damage roll for a dexterity-based attack with damage dice 2d8.</i></li>
+    <li><b>[WIS SAVE]:</b> <i>Calculates the save DC vs the monster's wisdom.</i></li>
+    <li><b>[3D6 + 1]</b>, <b>[STR ATK - 2]</b>, <b>[WIS SAVE + 3]</b>: <i>Adds a modifier to the given values.</i></li>
+</ul>
 """
-        QMessageBox.information(self.view, "Macro Reference", reference_text)
+        reference_window.setText(reference_text)
+        reference_window.setTextFormat(Qt.TextFormat.RichText)
+        reference_window.setIcon(QMessageBox.Icon.NoIcon)
+        reference_window.exec_()
 
     def _handler_load_trait_template(self) -> None:
         all_templates = get_all_templates()

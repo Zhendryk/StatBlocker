@@ -33,6 +33,8 @@ from statblocker.data.action import (
 class StatBlock:
     # Basic Information
     name: str
+    epithet: str
+    description: str
     # Environmental details (Outside of statblock)
     habitat: list[Habitat]
     treasure: list[Treasure]
@@ -286,6 +288,14 @@ class StatBlock:
 
     def hb_v3_markdown(self, wide: bool = False) -> str:
         markdown_str = (
+            f"## {self.name}\n"
+            f"*{self.epithet}*\n"
+            f"{self.habitat_and_treasure_hb_v3_markdown if self.habitat_and_treasure_hb_v3_markdown else ''}\n"
+        )
+        markdown_str += (
+            f"{self.description if self.description else '<DESCRIPTION HERE>'}\n\n"
+        )
+        markdown_str += (
             f"{{{{monster,frame{",wide" if wide else ""}\n"
             f"## {self.name}\n"
             f"{self.subheader_hb_v3_markdown}\n"
@@ -327,6 +337,4 @@ class StatBlock:
         if self.legendary_actions_hb_v3_markdown:
             markdown_str += f"{self.legendary_actions_hb_v3_markdown}\n"
         markdown_str += "}}\n"
-        if self.habitat_and_treasure_hb_v3_markdown:
-            markdown_str += f"\n\n{self.habitat_and_treasure_hb_v3_markdown}"
         return markdown_str

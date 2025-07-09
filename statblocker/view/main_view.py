@@ -137,10 +137,18 @@ class MainView(QMainWindow):
 
     def _init_lineedits(self) -> None:
         self.ui.lineedit_name.clear()
+        self.ui.lineedit_epithet.clear()
         self.ui.lineedit_hp.clear()
         self.ui.lineedit_initiative.clear()
+        self.ui.lineedit_db_result.clear()
+        self.ui.lineedit_trait_title.clear()
+        self.ui.lineedit_action_title.clear()
+        self.ui.lineedit_bonus_action_title.clear()
+        self.ui.lineedit_reaction_title.clear()
+        self.ui.lineedit_legendary_action_title.clear()
 
     def _init_textedits(self) -> None:
+        self.ui.textedit_description.clear()
         self.ui.textedit_action.clear()
         self.ui.textedit_bonus_action.clear()
         self.ui.textedit_reaction.clear()
@@ -364,6 +372,8 @@ class MainView(QMainWindow):
     def load_statblock(self, statblock: StatBlock) -> None:
         self.init_ui()
         self.ui.lineedit_name.setText(statblock.name)
+        self.ui.lineedit_epithet.setText(statblock.epithet)
+        self.ui.textedit_description.setText(statblock.description)
         self.ui.spinbox_challenge_rating.setValue(statblock.challenge_rating.rating)
         self.ui.checkbox_has_lair.setChecked(statblock.challenge_rating.has_lair)
         self.ui.cb_habitat.setItemsChecked([h.display_name for h in statblock.habitat])
@@ -460,7 +470,15 @@ class MainView(QMainWindow):
 
     @property
     def name(self) -> str:
-        return self.ui.lineedit_name.text()
+        return self.ui.lineedit_name.text().strip()
+
+    @property
+    def epithet(self) -> str:
+        return self.ui.lineedit_epithet.text().strip()
+
+    @property
+    def description(self) -> str:
+        return self.ui.textedit_description.toPlainText().strip()
 
     @property
     def challenge_rating(self) -> ChallengeRating:
@@ -1012,12 +1030,14 @@ class MainView(QMainWindow):
     def statblock(self) -> StatBlock:
         return StatBlock(
             name=self.name,
+            epithet=self.epithet,
+            description=self.description,
             challenge_rating=self.challenge_rating,
             habitat=self.habitat,
             treasure=self.treasure,
             size=self.size,
             creature_type=self.creature_type,
-            tags=[],
+            tags=[],  # TODO: Implement me
             alignment=self.alignment,
             armor_class=self.ac,
             speed=self.speed,
@@ -1026,7 +1046,7 @@ class MainView(QMainWindow):
             vulnerabilities=self.vulnerabilities,
             resistances=self.resistances,
             immunities=self.immunities,
-            gear=[],
+            gear=[],  # TODO: Implement me
             senses=self.senses,
             languages=self.languages,
             traits=self.traits,
