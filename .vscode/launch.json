@@ -8,7 +8,15 @@
             "name": "StatBlocker: GUI",
             "type": "debugpy",
             "request": "launch",
-            "module": "statblocker",
+            "module": "statblocker.main",
+            "python": "${workspaceFolder}/statblocker/_venv/Scripts/python.exe",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "StatBlocker: Build .exe",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "statblocker.scripts.build_exe",
             "python": "${workspaceFolder}/statblocker/_venv/Scripts/python.exe",
             "console": "integratedTerminal"
         }
