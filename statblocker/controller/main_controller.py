@@ -12,6 +12,7 @@ from statblocker.data.db import MM2024DB, MM2024DBColumn, OperationType
 from statblocker.view.main_view import MainView
 from statblocker.data.stat_block import StatBlock
 from statblocker.data.enums import Size
+from statblocker.data.action import get_all_templates, CharacteristicType
 
 
 class MainController(QObject):
@@ -41,6 +42,21 @@ class MainController(QObject):
         self.view.ui.actionOpen_Folder.triggered.connect(self._handler_open_folder)
         self.view.ui.actionMacro_Reference.triggered.connect(
             self._handler_show_macro_reference
+        )
+        self.view.ui.actionLoad_Trait_Template.triggered.connect(
+            self._handler_load_trait_template
+        )
+        self.view.ui.actionLoad_Action_Template.triggered.connect(
+            self._handler_load_action_template
+        )
+        self.view.ui.actionLoad_Bonus_Action_Template.triggered.connect(
+            self._handler_load_bonus_action_template
+        )
+        self.view.ui.actionLoad_Reaction_Template.triggered.connect(
+            self._handler_load_reaction_template
+        )
+        self.view.ui.actionLoad_Legendary_Action_Template.triggered.connect(
+            self._handler_load_legendary_action_template
         )
 
     def _handler_open_folder(self) -> None:
@@ -264,6 +280,129 @@ class MainController(QObject):
 [3D6 + 1], [STR ATK - 2], [WIS SAVE + 3]: Adds a modifier to the given values.
 """
         QMessageBox.information(self.view, "Macro Reference", reference_text)
+
+    def _handler_load_trait_template(self) -> None:
+        all_templates = get_all_templates()
+        choices = [
+            t for t in all_templates.values() if t.ctype == CharacteristicType.TRAIT
+        ]
+        if choices:
+            choice, ok = QInputDialog.getItem(
+                None,
+                "Load Trait Template",
+                "Select a Trait Template to load:",
+                [c.label for c in choices],
+                0,
+                False,
+            )
+            if ok and choice:
+                chosen_template = next((t for t in choices if t.label == choice), None)
+                if chosen_template is None:
+                    raise RuntimeError
+                self.view.ui.lineedit_trait_title.setText(chosen_template.name)
+                self.view.ui.textedit_trait.setText(chosen_template.description)
+        else:
+            print("No trait templates to load, cancelling...")
+
+    def _handler_load_action_template(self) -> None:
+        all_templates = get_all_templates()
+        choices = [
+            t for t in all_templates.values() if t.ctype == CharacteristicType.ACTION
+        ]
+        if choices:
+            choice, ok = QInputDialog.getItem(
+                None,
+                "Load Action Template",
+                "Select a Action Template to load:",
+                [c.label for c in choices],
+                0,
+                False,
+            )
+            if ok and choice:
+                chosen_template = next((t for t in choices if t.label == choice), None)
+                if chosen_template is None:
+                    raise RuntimeError
+                self.view.ui.lineedit_action_title.setText(chosen_template.name)
+                self.view.ui.textedit_action.setText(chosen_template.description)
+        else:
+            print("No action templates to load, cancelling...")
+
+    def _handler_load_bonus_action_template(self) -> None:
+        all_templates = get_all_templates()
+        choices = [
+            t
+            for t in all_templates.values()
+            if t.ctype == CharacteristicType.BONUS_ACTION
+        ]
+        if choices:
+            choice, ok = QInputDialog.getItem(
+                None,
+                "Load Bonus Action Template",
+                "Select a Bonus Action Template to load:",
+                [c.label for c in choices],
+                0,
+                False,
+            )
+            if ok and choice:
+                chosen_template = next((t for t in choices if t.label == choice), None)
+                if chosen_template is None:
+                    raise RuntimeError
+                self.view.ui.lineedit_bonus_action_title.setText(chosen_template.name)
+                self.view.ui.textedit_bonus_action.setText(chosen_template.description)
+        else:
+            print("No bonus action templates to load, cancelling...")
+
+    def _handler_load_reaction_template(self) -> None:
+        all_templates = get_all_templates()
+        choices = [
+            t for t in all_templates.values() if t.ctype == CharacteristicType.REACTION
+        ]
+        if choices:
+            choice, ok = QInputDialog.getItem(
+                None,
+                "Load Reaction Template",
+                "Select a Reaction Template to load:",
+                [c.label for c in choices],
+                0,
+                False,
+            )
+            if ok and choice:
+                chosen_template = next((t for t in choices if t.label == choice), None)
+                if chosen_template is None:
+                    raise RuntimeError
+                self.view.ui.lineedit_reaction_title.setText(chosen_template.name)
+                self.view.ui.textedit_reaction.setText(chosen_template.description)
+        else:
+            print("No reaction templates to load, cancelling...")
+
+    def _handler_load_legendary_action_template(self) -> None:
+        all_templates = get_all_templates()
+        choices = [
+            t
+            for t in all_templates.values()
+            if t.ctype == CharacteristicType.LEGENDARY_ACTION
+        ]
+        if choices:
+            choice, ok = QInputDialog.getItem(
+                None,
+                "Load Legendary Action Template",
+                "Select a Legendary Action Template to load:",
+                [c.label for c in choices],
+                0,
+                False,
+            )
+            if ok and choice:
+                chosen_template = next((t for t in choices if t.label == choice), None)
+                if chosen_template is None:
+                    raise RuntimeError
+                self.view.ui.lineedit_legendary_action_title.setText(
+                    chosen_template.name
+                )
+                self.view.ui.textedit_legendary_action.setText(
+                    chosen_template.description
+                )
+        else:
+            print("No legendary action templates to load, cancelling...")
 
     def run(self) -> None:
         self.view.show()

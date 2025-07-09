@@ -272,30 +272,35 @@ class MainView(QMainWindow):
 
     def _toggle_textedit_availability(self, enabled: bool) -> None:
         # Traits
+        self.ui.actionLoad_Trait_Template.setEnabled(enabled)
         self.ui._lbl_traits.setEnabled(enabled)
         self.ui.lineedit_trait_title.setEnabled(enabled)
         self.ui.textedit_trait.setEnabled(enabled)
         self.ui.btn_add_trait.setEnabled(enabled)
         self.ui.listview_traits.setEnabled(enabled)
         # Actions
+        self.ui.actionLoad_Action_Template.setEnabled(enabled)
         self.ui._lbl_actions.setEnabled(enabled)
         self.ui.lineedit_action_title.setEnabled(enabled)
         self.ui.textedit_action.setEnabled(enabled)
         self.ui.btn_add_action.setEnabled(enabled)
         self.ui.listview_actions.setEnabled(enabled)
         # Bonus Actions
+        self.ui.actionLoad_Bonus_Action_Template.setEnabled(enabled)
         self.ui._lbl_bonus_actions.setEnabled(enabled)
         self.ui.lineedit_bonus_action_title.setEnabled(enabled)
         self.ui.textedit_bonus_action.setEnabled(enabled)
         self.ui.btn_add_bonus_action.setEnabled(enabled)
         self.ui.listview_bonus_actions.setEnabled(enabled)
         # Reactions
+        self.ui.actionLoad_Reaction_Template.setEnabled(enabled)
         self.ui._lbl_reactions.setEnabled(enabled)
         self.ui.lineedit_reaction_title.setEnabled(enabled)
         self.ui.textedit_reaction.setEnabled(enabled)
         self.ui.btn_add_reaction.setEnabled(enabled)
         self.ui.listview_reactions.setEnabled(enabled)
         # Legendary Actions
+        self.ui.actionLoad_Legendary_Action_Template.setEnabled(enabled)
         self.ui._lbl_legendary_actions.setEnabled(enabled)
         self.ui.lineedit_legendary_action_title.setEnabled(enabled)
         self.ui.textedit_legendary_action.setEnabled(enabled)
@@ -818,7 +823,7 @@ class MainView(QMainWindow):
             (
                 True
                 for idx in range(self.ui.listview_traits.count())
-                if self.ui.listview_traits.item(idx).text() == trait_title
+                if self.ui.listview_traits.item(idx).text() == new_trait.title
             ),
             False,
         )
@@ -861,7 +866,7 @@ class MainView(QMainWindow):
             (
                 True
                 for idx in range(self.ui.listview_actions.count())
-                if self.ui.listview_actions.item(idx).text() == action_title
+                if self.ui.listview_actions.item(idx).text() == new_action.title
             ),
             False,
         )
@@ -879,7 +884,7 @@ class MainView(QMainWindow):
         for i in range(self.ui.listview_bonus_actions.count()):
             item = self.ui.listview_bonus_actions.item(i)
             baction = item.data(Qt.ItemDataRole.UserRole)
-            assert isinstance(baction, Action)
+            assert isinstance(baction, BonusAction)
             retval.append(baction)
         return retval
 
@@ -904,7 +909,7 @@ class MainView(QMainWindow):
             (
                 True
                 for idx in range(self.ui.listview_bonus_actions.count())
-                if self.ui.listview_bonus_actions.item(idx).text() == baction_title
+                if self.ui.listview_bonus_actions.item(idx).text() == new_baction.title
             ),
             False,
         )
@@ -947,7 +952,7 @@ class MainView(QMainWindow):
             (
                 True
                 for idx in range(self.ui.listview_reactions.count())
-                if self.ui.listview_reactions.item(idx).text() == reaction_title
+                if self.ui.listview_reactions.item(idx).text() == new_reaction.title
             ),
             False,
         )
@@ -990,7 +995,8 @@ class MainView(QMainWindow):
             (
                 True
                 for idx in range(self.ui.listview_legendary_actions.count())
-                if self.ui.listview_legendary_actions.item(idx).text() == laction_title
+                if self.ui.listview_legendary_actions.item(idx).text()
+                == new_laction.title
             ),
             False,
         )

@@ -240,28 +240,30 @@ class StatBlock:
     def traits_hb_v3_markdown(self) -> str:
         if not self.traits:
             return ""
-        traits_str = "\n".join([trait.hb_v3_markdown for trait in self.traits])
+        traits_str = "\n\n".join([trait.hb_v3_markdown for trait in self.traits])
         return f"### Traits\n{traits_str}"
 
     @property
     def actions_hb_v3_markdown(self) -> str:
         if not self.actions:
             return ""
-        actions_str = "\n".join([action.hb_v3_markdown for action in self.actions])
+        actions_str = "\n\n".join([action.hb_v3_markdown for action in self.actions])
         return f"### Actions\n{actions_str}"
 
     @property
     def bonus_actions_hb_v3_markdown(self) -> str:
         if not self.bonus_actions:
             return ""
-        bonus_actions_str = "\n".join([ba.hb_v3_markdown for ba in self.bonus_actions])
+        bonus_actions_str = "\n\n".join(
+            [ba.hb_v3_markdown for ba in self.bonus_actions]
+        )
         return f"### Bonus Actions\n{bonus_actions_str}"
 
     @property
     def reactions_hb_v3_markdown(self) -> str:
         if not self.reactions:
             return ""
-        reactions_str = "\n".join(
+        reactions_str = "\n\n".join(
             [reaction.hb_v3_markdown for reaction in self.reactions]
         )
         return f"### Reactions\n{reactions_str}"
@@ -270,7 +272,7 @@ class StatBlock:
     def legendary_actions_hb_v3_markdown(self) -> str:
         if not self.legendary_actions:
             return ""
-        legendary_actions_str = "\n".join(
+        legendary_actions_str = "\n\n".join(
             [la.hb_v3_markdown for la in self.legendary_actions]
         )
         return f"### Legendary Actions\n{legendary_actions_str}"

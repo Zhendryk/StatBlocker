@@ -857,8 +857,19 @@
     </property>
     <addaction name="actionMacro_Reference"/>
    </widget>
+   <widget class="QMenu" name="menuTemplates">
+    <property name="title">
+     <string>Templates</string>
+    </property>
+    <addaction name="actionLoad_Trait_Template"/>
+    <addaction name="actionLoad_Action_Template"/>
+    <addaction name="actionLoad_Bonus_Action_Template"/>
+    <addaction name="actionLoad_Reaction_Template"/>
+    <addaction name="actionLoad_Legendary_Action_Template"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuHelp"/>
+   <addaction name="menuTemplates"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOpen_Folder">
@@ -879,6 +890,31 @@
   <action name="actionMacro_Reference">
    <property name="text">
     <string>Macro Reference</string>
+   </property>
+  </action>
+  <action name="actionLoad_Trait_Template">
+   <property name="text">
+    <string>Load Trait Template</string>
+   </property>
+  </action>
+  <action name="actionLoad_Action_Template">
+   <property name="text">
+    <string>Load Action Template</string>
+   </property>
+  </action>
+  <action name="actionLoad_Bonus_Action_Template">
+   <property name="text">
+    <string>Load Bonus Action Template</string>
+   </property>
+  </action>
+  <action name="actionLoad_Reaction_Template">
+   <property name="text">
+    <string>Load Reaction Template</string>
+   </property>
+  </action>
+  <action name="actionLoad_Legendary_Action_Template">
+   <property name="text">
+    <string>Load Legendary Action Template</string>
    </property>
   </action>
  </widget>
