@@ -160,7 +160,7 @@ def _substitute_stat_save_dc(
     ability_scores: AbilityScores, proficiency_bonus: int, match: re.Match
 ) -> str:
     stat = Ability.from_abbreviation(match.group(CG_STAT_SAVE_DC_STAT))
-    ability_modifier = _calculate_modifier("natural", ability_scores.scores[stat])
+    ability_modifier = calculate_ability_modifier(ability_scores.scores[stat])
     save_dc = 8 + proficiency_bonus + ability_modifier
     return str(save_dc)
 

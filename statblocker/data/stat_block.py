@@ -88,15 +88,18 @@ class StatBlock:
 
     @property
     def size_str(self) -> str:
-        ordered = ", ".join(
-            sorted([s.display_name for s in self.size], key=lambda x: x.lower())
-        )
-        split = ordered.rsplit(", ", 1)
-        all_but_last = split[0]
-        last = split[1] if len(split) > 1 else ""
-        if last:
-            return f"{all_but_last}, or {last}"
-        return ordered
+        match len(self.size):
+            case 0:
+                return ""
+            case 1:
+                return self.size[0].display_name
+            case _:
+                ordered_sizes = sorted([s for s in self.size], key=lambda x: x.value)
+                ordered_sizes_str = ", ".join([s.display_name for s in ordered_sizes])
+                split = ordered_sizes_str.rsplit(", ", 1)
+                all_but_last = split[0]
+                last = split[1]
+                return f"{all_but_last} or {last}"
 
     @property
     def tags_str(self) -> str:

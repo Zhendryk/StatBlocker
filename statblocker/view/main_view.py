@@ -338,6 +338,8 @@ class MainView(QMainWindow):
             view_formatted_action = menu.addAction("View Formatted")
             edit_action = menu.addAction("Edit")
             delete_action = menu.addAction("Delete")
+            move_up_action = menu.addAction("Move Up")
+            move_down_action = menu.addAction("Move Down")
             action = menu.exec_(listview.viewport().mapToGlobal(position))
             if action == delete_action:
                 row = listview.row(item)
@@ -353,6 +355,14 @@ class MainView(QMainWindow):
                 QMessageBox.information(
                     self, itemdata.title, itemdata.resolved_description
                 )
+            elif action == move_up_action:
+                row = listview.row(item)
+                taken_item = listview.takeItem(row)
+                listview.insertItem(max(row - 1, 0), taken_item)
+            elif action == move_down_action:
+                row = listview.row(item)
+                taken_item = listview.takeItem(row)
+                listview.insertItem(min(row + 1, listview.count()), taken_item)
 
     def _handler_ctx_menu_left_pane(self, position: QPoint) -> None:
         item = self.ui.listview_available_statblocks.itemAt(position)

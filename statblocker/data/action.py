@@ -405,6 +405,47 @@ ALL_CHARACTERISTIC_TEMPLATES: Final[Sequence[CharacteristicTemplate]] = [
         name="Wild Talent",
         description="Choose one cantrip; the creature can cast that cantrip without spell components, using Intelligence, Wisdom or Charisma as the spellcasting ability.",
     ),
+    TraitTemplate(
+        label="Ritual Scarrring",
+        name="Ritual Scarring",
+        description="This creature's body is lined with sacred scars. Whenever it takes slashing or piercing damage, roll a d4. On a 4, a magical glyph embedded in its flesh flares, and one creature within 10 feet must succeed on a Constitution saving throw (DC = 8 + proficiency bonus + Constitution modifier) or be blinded until the end of their next turn.",
+    ),
+    TraitTemplate(
+        label="Blood Channeling",
+        name="Blood Channeling",
+        description="When this creature casts a spell that deals damage, it can choose to take damage equal to one of its damage dice in order to reroll one damage die.",
+    ),
+    TraitTemplate(
+        label="Hemomantic Bond",
+        name="Hemomantic Bond",
+        description="While within 30 feet of another allied creature with this trait, the creature can choose to redirect damage it takes to that ally as a reaction.",
+    ),
+    TraitTemplate(
+        label="Pulse of Mortifera",
+        name="Pulse of Mortifera",
+        description="Once per day, when the creature is reduced to 0 hit points, it instead returns with 1 hit point and casts Crown of Madness on the nearest enemy.",
+    ),
+    TraitTemplate(
+        label="Twisted Immune Response",
+        name="Twisted Immune Response",
+        description="Any Necrotic or Poison damage this creature takes is instead treated as healing.",
+    ),
+    TraitTemplate(
+        label="Wretching Touch",
+        name="Wretching Touch",
+        description="Any creature that hits this creature with a non-magical melee weapon or unarmed strike must succeed on a Constitution saving throw or vomit bile, losing its bonus action on its next turn.",
+    ),
+    TraitTemplate(label="Overclocked Core", name="Overclocked Core", description="."),
+    TraitTemplate(
+        label="Aether Dampening Field",
+        name="Aether Dampening Field",
+        description="Spells cast within 10 feet of the creature have their range halved unless the caster succeeds on a spellcasting ability check (DC 10 + creature's CR).",
+    ),
+    TraitTemplate(
+        label="Ablative Armor",
+        name="Ablative Armor",
+        description="At the start of its turn, the creature chooses one damage type (except Psychic). Until the start of its next turn, it has resistance to that type. It cannot choose the same type two rounds in a row.",
+    ),
     # Actions
     MultiattackTemplate(),
     MeleeAttackRollTemplate(ctype=CharacteristicType.ACTION, ability=Ability.STRENGTH),
