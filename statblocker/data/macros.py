@@ -29,6 +29,9 @@ CG_DICE_ROLL_DIE_TYPE: Final[int] = 2
 # [MON] - show monster name
 PATTERN_MONSTER_NAME: Final[re.Pattern] = re.compile(r"\[MON\]")
 
+# [SMON] - Show short monster name (last word in name, space delimited)
+PATTERN_SHORT_MONSTER_NAME: Final[re.Pattern] = re.compile(r"\[SMON\]")
+
 # [<STAT>] - show stat modifier
 PATTERN_STAT_MODIFIER: Final[re.Pattern] = re.compile(r"\[(STR|DEX|CON|INT|WIS|CHA)\]")
 CG_STAT_MODIFIER_STAT: Final[int] = 1
@@ -103,7 +106,14 @@ KEYWORD_PHRASES: Final[list[str]] = (
     + [ct.display_name for ct in CoverType]
     + [lc.display_name for lc in LightingCondition]
     + [ol.display_name for ol in ObscurityLevel]
-    + ["Hit Points", "Hit Point", "Difficult Terrain", "Advantage", "Disadvantage"]
+    + [
+        "Hit Points",
+        "Hit Point",
+        "Difficult Terrain",
+        "Advantage",
+        "Disadvantage",
+        "Bloodied",
+    ]
 )
 
 
@@ -237,6 +247,8 @@ def resolve_all_macros(
 ) -> str:
     resolved_text = PATTERN_DICE_ROLL.sub(_substitute_dice_roll, text)
     resolved_text = PATTERN_MONSTER_NAME.sub(monster_name, resolved_text)
+    short_monster_name = monster_name.split(" ")[-1]
+    resolved_text = PATTERN_SHORT_MONSTER_NAME.sub(short_monster_name, resolved_text)
     resolved_text = PATTERN_STAT_MODIFIER.sub(
         partial(_substitute_stat_modifier, ability_scores), resolved_text
     )

@@ -12,7 +12,11 @@ from statblocker.data.db import MM2024DB, MM2024DBColumn, OperationType
 from statblocker.view.main_view import MainView
 from statblocker.data.stat_block import StatBlock
 from statblocker.data.enums import Size
-from statblocker.data.action import get_all_templates, CharacteristicType
+from statblocker.data.action import (
+    get_all_templates,
+    CharacteristicType,
+    CombatCharacteristic,
+)
 
 
 class MainController(QObject):
@@ -38,6 +42,7 @@ class MainController(QObject):
         )
         self.view.ui.btn_db_query.pressed.connect(self._handler_query_db)
         self.view.deleteStatblock.connect(self._handler_delete_statblock)
+        self.view.saveTemplate.connect(self._handler_save_template)
         self.view.ui.btn_open_folder.pressed.connect(self._handler_open_folder)
         self.view.ui.actionExport_Statblock_to_Markdown.triggered.connect(
             self._handler_export_markdown_pressed
@@ -120,6 +125,17 @@ class MainController(QObject):
         md_str = current_statblock.hb_v3_markdown()
         export_path.write_text(md_str, encoding="utf-8")
         print(f"Statblock saved: {export_path}")
+
+    def _handler_save_template(self, cc: CombatCharacteristic) -> None:
+        if not hasattr(cc, "template_code"):
+            print(
+                "Combat characteristic does not have template code generator, skipping template save..."
+            )
+            return
+        filename = f"{cc.ctype.name.lower()}_template_{cc.title.replace(" ", "_").lower()}.template"
+        template_path = (self._current_dirpath / filename).resolve()
+        template_path.write_text(cc.template_code)
+        print(f"Template saved: {template_path}")
 
     def _handler_db_populate_statblock(self) -> None:
         operation = OperationType.from_display_name(

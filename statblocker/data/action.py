@@ -7,8 +7,6 @@ from statblocker.data.ability_scores import AbilityScores
 from statblocker.data.enums import Ability, Proficiency, LimitedUsageType
 from statblocker.data.macros import format_keyword_phrases, resolve_all_macros
 
-# TODO: Probably need to do serde work in all of these classes
-
 
 class CharacteristicType(Enum):
     TRAIT = auto()
@@ -96,25 +94,77 @@ class Trait(CombatCharacteristic):
         self.limited_use_charges = state["limited_use_charges"]
         self.lair_charge_bonuses = state["lair_charge_bonuses"]
 
+    @property
+    def template_code(self) -> str:
+        return f"""
+    TraitTemplate(
+        label="{self.title}",
+        name="{self.title}",
+        description="{self.description}",
+    ),\n
+"""
+
 
 @dataclass
 class Action(CombatCharacteristic):
     ctype: CharacteristicType = field(default=CharacteristicType.ACTION)
+
+    @property
+    def template_code(self) -> str:
+        return f"""
+    CharacteristicTemplate(
+        ctype=CharacteristicType.LEGENDARY_ACTION,
+        label="{self.title}",
+        name="{self.title}",
+        description="{self.description}",
+    ),\n
+"""
 
 
 @dataclass
 class BonusAction(CombatCharacteristic):
     ctype: CharacteristicType = field(default=CharacteristicType.BONUS_ACTION)
 
+    @property
+    def template_code(self) -> str:
+        return f"""
+    BonusActionTemplate(
+        label="{self.title}",
+        name="{self.title}",
+        description="{self.description}",
+    ),\n
+"""
+
 
 @dataclass
 class Reaction(CombatCharacteristic):
     ctype: CharacteristicType = field(default=CharacteristicType.REACTION)
 
+    @property
+    def template_code(self) -> str:
+        return f"""
+    ReactionTemplate(
+        label="{self.title}",
+        name="{self.title}",
+        description="{self.description}",
+    ),\n
+"""
+
 
 @dataclass
 class LegendaryAction(CombatCharacteristic):
     ctype: CharacteristicType = field(default=CharacteristicType.LEGENDARY_ACTION)
+
+    @property
+    def template_code(self) -> str:
+        return f"""
+    CharacteristicTemplate(
+        ctype=CharacteristicType.ACTION,
+        label="{self.title}",
+        name="{self.title}",
+        description="{self.description}",
+    ),\n
+"""
 
 
 @dataclass(kw_only=True)
@@ -225,7 +275,9 @@ class MultiattackTemplate(CharacteristicTemplate):
     ctype: CharacteristicType = field(default=CharacteristicType.ACTION)
     label: str = field(default="Multiattack (Action)")
     name: str = field(default="Multiattack")
-    description: str = field(default="The [MON] makes ??? ??? attacks.")
+    description: str = field(
+        default="The [MON] makes ??? attacks, using ??? or ??? in any combination."
+    )
 
 
 @dataclass(kw_only=True)

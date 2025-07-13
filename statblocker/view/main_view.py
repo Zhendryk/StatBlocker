@@ -1,4 +1,5 @@
 # PyQt5 View wrapper for MVC pattern
+import re
 from functools import partial
 from PyQt5.QtCore import pyqtSignal, Qt, QPoint
 from PyQt5.QtWidgets import (
@@ -56,6 +57,7 @@ DamageOrCondition: TypeAlias = (
 
 class MainView(QMainWindow):
     deleteStatblock = pyqtSignal(str)
+    saveTemplate = pyqtSignal(CombatCharacteristic)
 
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
@@ -259,10 +261,17 @@ class MainView(QMainWindow):
         self.ui.btn_understands_language.pressed.connect(self.add_understood_language)
         self.ui.btn_speaks_language.pressed.connect(self.add_spoken_language)
         self.ui.btn_add_trait.pressed.connect(self.add_trait)
+        self.ui.btn_update_trait.pressed.connect(self.update_trait)
         self.ui.btn_add_action.pressed.connect(self.add_action)
+        self.ui.btn_update_action.pressed.connect(self.update_action)
         self.ui.btn_add_bonus_action.pressed.connect(self.add_bonus_action)
+        self.ui.btn_update_bonus_action.pressed.connect(self.update_bonus_action)
         self.ui.btn_add_reaction.pressed.connect(self.add_reaction)
+        self.ui.btn_update_reaction.pressed.connect(self.update_reaction)
         self.ui.btn_add_legendary_action.pressed.connect(self.add_legendary_action)
+        self.ui.btn_update_legendary_action.pressed.connect(
+            self.update_legendary_action
+        )
 
     def init_ui(self) -> None:
         self._init_comboboxes()
@@ -340,6 +349,7 @@ class MainView(QMainWindow):
             delete_action = menu.addAction("Delete")
             move_up_action = menu.addAction("Move Up")
             move_down_action = menu.addAction("Move Down")
+            save_as_template_action = menu.addAction("Save as Template")
             action = menu.exec_(listview.viewport().mapToGlobal(position))
             if action == delete_action:
                 row = listview.row(item)
@@ -363,6 +373,10 @@ class MainView(QMainWindow):
                 row = listview.row(item)
                 taken_item = listview.takeItem(row)
                 listview.insertItem(min(row + 1, listview.count()), taken_item)
+            elif action == save_as_template_action:
+                itemdata = item.data(Qt.ItemDataRole.UserRole)
+                assert isinstance(itemdata, CombatCharacteristic)
+                self.saveTemplate.emit(itemdata)
 
     def _handler_ctx_menu_left_pane(self, position: QPoint) -> None:
         item = self.ui.listview_available_statblocks.itemAt(position)
@@ -489,6 +503,10 @@ class MainView(QMainWindow):
     @property
     def description(self) -> str:
         return self.ui.textedit_description.toPlainText().strip()
+
+    @property
+    def tags(self) -> list[str]:
+        return [s.strip() for s in self.ui.lineedit_tags.strip().split(",") if s]
 
     @property
     def challenge_rating(self) -> ChallengeRating:
@@ -863,6 +881,43 @@ class MainView(QMainWindow):
         self.ui.lineedit_trait_title.clear()
         self.ui.textedit_trait.clear()
 
+    def update_trait(self) -> None:
+        trait_title = self.ui.lineedit_trait_title.text()
+        if not trait_title:
+            return
+        trait_description = self.ui.textedit_trait.toPlainText()
+        if not trait_description:
+            return
+        updated_trait = Trait(
+            self.name,
+            self.ability_scores,
+            self.challenge_rating.proficiency_bonus,
+            self.ability_scores.saving_throws,
+            self.ui.checkbox_has_lair.isChecked(),
+            trait_title,
+            trait_description,
+            # TODO: Implement these
+            limited_use_type=LimitedUsageType.UNLIMITED,
+            limited_use_charges={},
+            lair_charge_bonuses={},
+        )
+        existing_trait_row = next(
+            (
+                r
+                for r in range(self.ui.listview_traits.count())
+                if self.ui.listview_traits.item(r).text() == trait_title
+            ),
+            None,
+        )
+        if existing_trait_row is None:
+            self.add_trait(new_trait=updated_trait)
+        else:
+            li = QListWidgetItem()
+            li.setText(updated_trait.title)
+            li.setData(Qt.ItemDataRole.UserRole, updated_trait)
+            self.ui.listview_traits.insertItem(max(existing_trait_row - 1, 0), li)
+            self.ui.listview_traits.takeItem(existing_trait_row + 1)
+
     @property
     def actions(self) -> list[Action]:
         retval = []
@@ -905,6 +960,39 @@ class MainView(QMainWindow):
             self.ui.listview_actions.addItem(li)
         self.ui.lineedit_action_title.clear()
         self.ui.textedit_action.clear()
+
+    def update_action(self) -> None:
+        action_title = self.ui.lineedit_action_title.text()
+        if not action_title:
+            return
+        action_description = self.ui.textedit_action.toPlainText()
+        if not action_description:
+            return
+        updated_action = Action(
+            self.name,
+            self.ability_scores,
+            self.challenge_rating.proficiency_bonus,
+            self.ability_scores.saving_throws,
+            self.ui.checkbox_has_lair.isChecked(),
+            action_title,
+            action_description,
+        )
+        existing_action_row = next(
+            (
+                r
+                for r in range(self.ui.listview_actions.count())
+                if self.ui.listview_actions.item(r).text() == action_title
+            ),
+            None,
+        )
+        if existing_action_row is None:
+            self.add_action(new_action=updated_action)
+        else:
+            li = QListWidgetItem()
+            li.setText(updated_action.title)
+            li.setData(Qt.ItemDataRole.UserRole, updated_action)
+            self.ui.listview_actions.insertItem(max(existing_action_row - 1, 0), li)
+            self.ui.listview_actions.takeItem(existing_action_row + 1)
 
     @property
     def bonus_actions(self) -> list[BonusAction]:
@@ -949,6 +1037,41 @@ class MainView(QMainWindow):
         self.ui.lineedit_bonus_action_title.clear()
         self.ui.textedit_bonus_action.clear()
 
+    def update_bonus_action(self) -> None:
+        baction_title = self.ui.lineedit_bonus_action_title.text()
+        if not baction_title:
+            return
+        baction_description = self.ui.textedit_bonus_action.toPlainText()
+        if not baction_description:
+            return
+        updated_baction = BonusAction(
+            self.name,
+            self.ability_scores,
+            self.challenge_rating.proficiency_bonus,
+            self.ability_scores.saving_throws,
+            self.ui.checkbox_has_lair.isChecked(),
+            baction_title,
+            baction_description,
+        )
+        existing_baction_row = next(
+            (
+                r
+                for r in range(self.ui.listview_bonus_actions.count())
+                if self.ui.listview_bonus_actions.item(r).text() == baction_title
+            ),
+            None,
+        )
+        if existing_baction_row is None:
+            self.add_bonus_action(new_baction=updated_baction)
+        else:
+            li = QListWidgetItem()
+            li.setText(updated_baction.title)
+            li.setData(Qt.ItemDataRole.UserRole, updated_baction)
+            self.ui.listview_bonus_actions.insertItem(
+                max(existing_baction_row - 1, 0), li
+            )
+            self.ui.listview_bonus_actions.takeItem(existing_baction_row + 1)
+
     @property
     def reactions(self) -> list[Reaction]:
         retval = []
@@ -991,6 +1114,39 @@ class MainView(QMainWindow):
             self.ui.listview_reactions.addItem(li)
         self.ui.lineedit_reaction_title.clear()
         self.ui.textedit_reaction.clear()
+
+    def update_reaction(self) -> None:
+        reaction_title = self.ui.lineedit_reaction_title.text()
+        if not reaction_title:
+            return
+        reaction_description = self.ui.textedit_reaction.toPlainText()
+        if not reaction_description:
+            return
+        updated_reaction = Reaction(
+            self.name,
+            self.ability_scores,
+            self.challenge_rating.proficiency_bonus,
+            self.ability_scores.saving_throws,
+            self.ui.checkbox_has_lair.isChecked(),
+            reaction_title,
+            reaction_description,
+        )
+        existing_reaction_row = next(
+            (
+                r
+                for r in range(self.ui.listview_reactions.count())
+                if self.ui.listview_reactions.item(r).text() == reaction_title
+            ),
+            None,
+        )
+        if existing_reaction_row is None:
+            self.add_reaction(new_reaction=updated_reaction)
+        else:
+            li = QListWidgetItem()
+            li.setText(updated_reaction.title)
+            li.setData(Qt.ItemDataRole.UserRole, updated_reaction)
+            self.ui.listview_reactions.insertItem(max(existing_reaction_row - 1, 0), li)
+            self.ui.listview_reactions.takeItem(existing_reaction_row + 1)
 
     @property
     def legendary_actions(self) -> list[LegendaryAction]:
@@ -1035,6 +1191,41 @@ class MainView(QMainWindow):
             self.ui.listview_legendary_actions.addItem(li)
         self.ui.lineedit_legendary_action_title.clear()
         self.ui.textedit_legendary_action.clear()
+
+    def update_legendary_action(self) -> None:
+        laction_title = self.ui.lineedit_legendary_action_title.text()
+        if not laction_title:
+            return
+        laction_description = self.ui.textedit_legendary_action.toPlainText()
+        if not laction_description:
+            return
+        updated_laction = LegendaryAction(
+            self.name,
+            self.ability_scores,
+            self.challenge_rating.proficiency_bonus,
+            self.ability_scores.saving_throws,
+            self.ui.checkbox_has_lair.isChecked(),
+            laction_title,
+            laction_description,
+        )
+        existing_laction_row = next(
+            (
+                r
+                for r in range(self.ui.listview_legendary_actions.count())
+                if self.ui.listview_legendary_actions.item(r).text() == laction_title
+            ),
+            None,
+        )
+        if existing_laction_row is None:
+            self.add_legendary_action(new_laction=updated_laction)
+        else:
+            li = QListWidgetItem()
+            li.setText(updated_laction.title)
+            li.setData(Qt.ItemDataRole.UserRole, updated_laction)
+            self.ui.listview_legendary_actions.insertItem(
+                max(existing_laction_row - 1, 0), li
+            )
+            self.ui.listview_legendary_actions.takeItem(existing_laction_row + 1)
 
     @property
     def statblock(self) -> StatBlock:
