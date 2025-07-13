@@ -506,7 +506,7 @@ class MainView(QMainWindow):
 
     @property
     def tags(self) -> list[str]:
-        return [s.strip() for s in self.ui.lineedit_tags.strip().split(",") if s]
+        return [s.strip() for s in self.ui.lineedit_tags.text().strip().split(",") if s]
 
     @property
     def challenge_rating(self) -> ChallengeRating:
@@ -1238,7 +1238,7 @@ class MainView(QMainWindow):
             treasure=self.treasure,
             size=self.size,
             creature_type=self.creature_type,
-            tags=[],  # TODO: Implement me
+            tags=self.tags,
             alignment=self.alignment,
             armor_class=self.ac,
             speed=self.speed,

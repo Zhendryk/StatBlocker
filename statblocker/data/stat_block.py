@@ -105,9 +105,7 @@ class StatBlock:
     def tags_str(self) -> str:
         if not self.tags:
             return ""
-        return ", ".join(
-            sorted([tag.capitalize() for tag in self.tags], key=lambda x: x.lower())
-        )
+        return f"({', '.join(sorted(self.tags, key=lambda x: x.lower()))})"
 
     @property
     def alignment_str(self) -> str:
