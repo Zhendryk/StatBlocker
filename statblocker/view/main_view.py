@@ -915,7 +915,7 @@ class MainView(QMainWindow):
             li = QListWidgetItem()
             li.setText(updated_trait.title)
             li.setData(Qt.ItemDataRole.UserRole, updated_trait)
-            self.ui.listview_traits.insertItem(max(existing_trait_row - 1, 0), li)
+            self.ui.listview_traits.insertItem(existing_trait_row, li)
             self.ui.listview_traits.takeItem(existing_trait_row + 1)
 
     @property
@@ -991,7 +991,7 @@ class MainView(QMainWindow):
             li = QListWidgetItem()
             li.setText(updated_action.title)
             li.setData(Qt.ItemDataRole.UserRole, updated_action)
-            self.ui.listview_actions.insertItem(max(existing_action_row - 1, 0), li)
+            self.ui.listview_actions.insertItem(existing_action_row, li)
             self.ui.listview_actions.takeItem(existing_action_row + 1)
 
     @property
@@ -1067,9 +1067,7 @@ class MainView(QMainWindow):
             li = QListWidgetItem()
             li.setText(updated_baction.title)
             li.setData(Qt.ItemDataRole.UserRole, updated_baction)
-            self.ui.listview_bonus_actions.insertItem(
-                max(existing_baction_row - 1, 0), li
-            )
+            self.ui.listview_bonus_actions.insertItem(existing_baction_row, li)
             self.ui.listview_bonus_actions.takeItem(existing_baction_row + 1)
 
     @property
@@ -1145,7 +1143,7 @@ class MainView(QMainWindow):
             li = QListWidgetItem()
             li.setText(updated_reaction.title)
             li.setData(Qt.ItemDataRole.UserRole, updated_reaction)
-            self.ui.listview_reactions.insertItem(max(existing_reaction_row - 1, 0), li)
+            self.ui.listview_reactions.insertItem(existing_reaction_row, li)
             self.ui.listview_reactions.takeItem(existing_reaction_row + 1)
 
     @property
@@ -1222,9 +1220,7 @@ class MainView(QMainWindow):
             li = QListWidgetItem()
             li.setText(updated_laction.title)
             li.setData(Qt.ItemDataRole.UserRole, updated_laction)
-            self.ui.listview_legendary_actions.insertItem(
-                max(existing_laction_row - 1, 0), li
-            )
+            self.ui.listview_legendary_actions.insertItem(existing_laction_row, li)
             self.ui.listview_legendary_actions.takeItem(existing_laction_row + 1)
 
     @property
