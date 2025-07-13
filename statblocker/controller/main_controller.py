@@ -243,10 +243,10 @@ class MainController(QObject):
             query_filters[MM2024DBColumn.CR] = current_statblock.challenge_rating.rating
         if self.view.ui.checkbox_db_size.isChecked() and current_statblock.size:
             max_size = Size(max([sz.value for sz in current_statblock.size]))
-            query_filters[MM2024DBColumn.SIZE] = max_size.display_name
+            query_filters[MM2024DBColumn.SIZE] = max_size.value
         if self.view.ui.checkbox_db_creature_type.isChecked():
             query_filters[MM2024DBColumn.CREATURE_TYPE] = (
-                current_statblock.creature_type.display_name
+                current_statblock.creature_type.value
             )
         if self.view.ui.checkbox_db_legendary.isChecked():
             query_filters[MM2024DBColumn.LEGENDARY] = 1

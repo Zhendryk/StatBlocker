@@ -186,43 +186,46 @@ class MonsterManual2024Database:
     def query(
         self,
         filters: dict[str | MM2024DBColumn, MonsterDataType],
-        aggregate_column_name: str | MM2024DBColumn,
+        aggregate_column_name: str,
         operation: OperationType = OperationType.MEAN,
     ) -> tuple[float, int]:
+        query_df = self._df.copy()
         filters = {
             (k if isinstance(k, str) else k.column_str): v for k, v in filters.items()
         }
+        groupby_list = [col for col in filters]
+        # Explode any entries in the queried columns if they belong to multiple values
+        for col in groupby_list:
+            query_df[col] = query_df[col].apply(
+                lambda v: v if isinstance(v, list) else [v]
+            )
+        for col in groupby_list:
+            query_df = query_df.explode(col)
         aggregate_column_name = (
             aggregate_column_name
             if isinstance(aggregate_column_name, str)
             else aggregate_column_name.column_str
         )
-        try:
-            query_df = self._df.copy()
-            for column_name, value in filters.items():
-                match column_name:
-                    case "Size" | "Creature Type":
-                        query_df = query_df[
-                            query_df[column_name].apply(lambda cell: value in cell)
-                        ]
-                    case _:
-                        query_df = query_df[query_df[column_name] == value]
-            sample_size = len(query_df[aggregate_column_name])
-            match operation:
-                case OperationType.MEAN:
-                    return query_df[aggregate_column_name].mean(), sample_size
-                case OperationType.MEDIAN:
-                    return query_df[aggregate_column_name].median(), sample_size
-                case OperationType.MODE:
-                    return query_df[aggregate_column_name].mode(), sample_size
-                case OperationType.MIN:
-                    return query_df[aggregate_column_name].min(), sample_size
-                case OperationType.MAX:
-                    return query_df[aggregate_column_name].max(), sample_size
-                case _:
-                    raise NotImplementedError
-        except Exception as e:
-            raise ValueError(f"Error querying database: {e}") from e
+        aggregation = query_df.groupby(groupby_list)[aggregate_column_name]
+        calculated = getattr(aggregation, operation.name.lower())()
+        sample_size = calculated.count()
+        # Ensure filter values match the actual types in the grouped index
+        index_values = []
+        for col in groupby_list:
+            col_dtype = query_df[col].explode().dropna().infer_objects().dtype
+            val = filters[col]
+            if pd.api.types.is_numeric_dtype(col_dtype):
+                val = float(val)
+            else:
+                val = str(val)
+            index_values.append(val)
+        index_key = tuple(index_values)
+        if index_key in calculated.index:
+            return calculated.loc[index_key], sample_size
+        else:
+            raise KeyError(
+                f"No data found for filters {filters}. Tried index {index_key}"
+            )
 
     @property
     def column_names(self) -> Sequence[str]:

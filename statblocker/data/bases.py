@@ -1,5 +1,5 @@
 from __future__ import annotations
-from enum import Enum
+from enum import Enum, IntEnum
 from typing import Protocol
 
 
@@ -9,7 +9,7 @@ class StatblockComponent(Protocol):
     def hb_v3_markdown(self) -> str: ...
 
 
-class StatblockEnum(Enum):
+class StatblockEnum(IntEnum):
 
     @property
     def display_name(self) -> str:
