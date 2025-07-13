@@ -147,21 +147,25 @@ class MainController(QObject):
             query_filters[MM2024DBColumn.CR] = current_statblock.challenge_rating.rating
         if self.view.ui.checkbox_db_size.isChecked() and current_statblock.size:
             max_size = Size(max([sz.value for sz in current_statblock.size]))
-            query_filters[MM2024DBColumn.SIZE] = max_size.display_name
+            query_filters[MM2024DBColumn.SIZE] = max_size.value
         if self.view.ui.checkbox_db_creature_type.isChecked():
             query_filters[MM2024DBColumn.CREATURE_TYPE] = (
-                current_statblock.creature_type.display_name
+                current_statblock.creature_type.value
             )
         if self.view.ui.checkbox_db_legendary.isChecked():
             query_filters[MM2024DBColumn.LEGENDARY] = 1
         filter_str = (
             "{" + ", ".join([f"{k.name}:{v}" for k, v in query_filters.items()]) + "}"
         )
-        ac, ac_ss = MM2024DB.query(
-            query_filters,
-            MM2024DBColumn.AC,
-            operation=operation,
-        )
+        try:
+            ac, ac_ss = MM2024DB.query(
+                query_filters,
+                MM2024DBColumn.AC,
+                operation=operation,
+            )
+        except KeyError:
+            print("Unable to find data")
+            return
         self.view.ui.spinbox_ac.setValue(int(ac))
         print(
             f"Calculated {operation.display_name} AC of {ac} for filter: {filter_str}. Sample Size: {ac_ss}"
@@ -253,11 +257,15 @@ class MainController(QObject):
         filter_str = (
             "{" + ", ".join([f"{k.name}:{v}" for k, v in query_filters.items()]) + "}"
         )
-        value, value_ss = MM2024DB.query(
-            query_filters,
-            aggregate_column,
-            operation=operation,
-        )
+        try:
+            value, value_ss = MM2024DB.query(
+                query_filters,
+                aggregate_column,
+                operation=operation,
+            )
+        except KeyError:
+            print(f"No data found for filters: {filter_str}")
+            return
         self.view.ui.lineedit_db_result.setText(str(value))
         print(
             f"Calculated {operation.display_name} {aggregate_column.column_str} of {value} for filter: {filter_str}. Sample Size: {value_ss}"

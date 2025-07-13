@@ -140,6 +140,7 @@ class MainView(QMainWindow):
     def _init_lineedits(self) -> None:
         self.ui.lineedit_name.clear()
         self.ui.lineedit_epithet.clear()
+        self.ui.lineedit_tags.clear()
         self.ui.lineedit_hp.clear()
         self.ui.lineedit_initiative.clear()
         self.ui.lineedit_db_result.clear()
@@ -398,6 +399,7 @@ class MainView(QMainWindow):
         self.ui.lineedit_name.setText(statblock.name)
         self.ui.lineedit_epithet.setText(statblock.epithet)
         self.ui.textedit_description.setText(statblock.description)
+        self.ui.lineedit_tags.setText(", ".join(statblock.tags))
         self.ui.spinbox_challenge_rating.setValue(statblock.challenge_rating.rating)
         self.ui.checkbox_has_lair.setChecked(statblock.challenge_rating.has_lair)
         self.ui.cb_habitat.setItemsChecked([h.display_name for h in statblock.habitat])
