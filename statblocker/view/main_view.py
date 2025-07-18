@@ -1,5 +1,6 @@
 # PyQt5 View wrapper for MVC pattern
 import re
+from copy import deepcopy
 from functools import partial
 from PyQt5.QtCore import pyqtSignal, Qt, QPoint
 from PyQt5.QtWidgets import (
@@ -310,6 +311,13 @@ class MainView(QMainWindow):
         self._init_textedits()
         self.ui.lineedit_name.textChanged.connect(self._handler_textedit_availability)
         self._handler_textedit_availability()
+        has_legendary_actions = self.ui.listview_legendary_actions.count() > 0
+        has_lair = self.ui.checkbox_has_lair.isChecked()
+        self.ui.spinbox_legendary_actions.setEnabled(has_legendary_actions)
+        self.ui.spinbox_legendary_actions_lair_bonus.setEnabled(
+            has_legendary_actions and has_lair
+        )
+        self.ui.spinbox_legendary_resistances_lair_bonus.setEnabled(has_lair)
 
     def _handler_textedit_availability(self) -> None:
         enabled = True if self.name else False
@@ -405,6 +413,24 @@ class MainView(QMainWindow):
                 itemdata = item.data(Qt.ItemDataRole.UserRole)
                 assert isinstance(itemdata, CombatCharacteristic)
                 self.saveTemplate.emit(itemdata)
+        else:
+            menu = QMenu()
+            alphabetize_action = menu.addAction("Order Alphabetically")
+            action = menu.exec_(listview.viewport().mapToGlobal(position))
+            if action == alphabetize_action:
+                listview.blockSignals(True)
+                itemdatas = [
+                    listview.item(r).data(Qt.ItemDataRole.UserRole)
+                    for r in range(listview.count())
+                ]
+                sorted_itemdatas = sorted(itemdatas, key=lambda i: i.title.lower())
+                listview.clear()
+                for data in sorted_itemdatas:
+                    new_item = QListWidgetItem()
+                    new_item.setText(data.title)
+                    new_item.setData(Qt.ItemDataRole.UserRole, data)
+                    listview.addItem(new_item)
+                listview.blockSignals(False)
 
     def _handler_ctx_menu_left_pane(self, position: QPoint) -> None:
         item = self.ui.listview_available_statblocks.itemAt(position)

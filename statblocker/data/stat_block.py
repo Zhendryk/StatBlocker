@@ -279,11 +279,7 @@ class StatBlock:
 
     @property
     def legendary_actions_hb_v3_markdown(self) -> str:
-        if (
-            not self.legendary_actions
-            or self.num_legendary_actions is None
-            or self.legendary_actions_lair_bonus is None
-        ):
+        if not self.legendary_actions or self.num_legendary_actions is None:
             return ""
         la_uses_txt = f"{self.num_legendary_actions}" + (
             f" ({self.num_legendary_actions + self.legendary_actions_lair_bonus} in Lair)"
