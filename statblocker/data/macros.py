@@ -32,6 +32,12 @@ PATTERN_MONSTER_NAME: Final[re.Pattern] = re.compile(r"\[MON\]")
 # [SMON] - Show short monster name (last word in name, space delimited)
 PATTERN_SHORT_MONSTER_NAME: Final[re.Pattern] = re.compile(r"\[SMON\]")
 
+# [LR] - Show number of legendary resistances
+PATTERN_LEGENDARY_RESISTANCES: Final[re.Pattern] = re.compile(r"\[LR\]")
+
+# [LRL] - Show number of legendary resistances while in lair
+PATTERN_LEGENDARY_RESISTANCES_IN_LAIR: Final[re.Pattern] = re.compile(r"\[LRL\]")
+
 # [<STAT>] - show stat modifier
 PATTERN_STAT_MODIFIER: Final[re.Pattern] = re.compile(r"\[(STR|DEX|CON|INT|WIS|CHA)\]")
 CG_STAT_MODIFIER_STAT: Final[int] = 1
@@ -243,12 +249,23 @@ def format_keyword_phrases(text: str) -> str:
 
 
 def resolve_all_macros(
-    text: str, monster_name: str, ability_scores: AbilityScores, proficiency_bonus: int
+    text: str,
+    monster_name: str,
+    ability_scores: AbilityScores,
+    proficiency_bonus: int,
+    num_legendary_resistances: int | None,
+    legendary_resistances_lair_bonus: int | None,
 ) -> str:
     resolved_text = PATTERN_DICE_ROLL.sub(_substitute_dice_roll, text)
     resolved_text = PATTERN_MONSTER_NAME.sub(monster_name, resolved_text)
     short_monster_name = monster_name.split(" ")[-1]
     resolved_text = PATTERN_SHORT_MONSTER_NAME.sub(short_monster_name, resolved_text)
+    lr = num_legendary_resistances or 0
+    lr_lb = legendary_resistances_lair_bonus or 0
+    resolved_text = PATTERN_LEGENDARY_RESISTANCES_IN_LAIR.sub(
+        f"{lr + lr_lb}", resolved_text
+    )
+    resolved_text = PATTERN_LEGENDARY_RESISTANCES.sub(f"{lr}", resolved_text)
     resolved_text = PATTERN_STAT_MODIFIER.sub(
         partial(_substitute_stat_modifier, ability_scores), resolved_text
     )

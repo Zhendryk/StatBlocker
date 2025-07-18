@@ -110,8 +110,22 @@ class MainView(QMainWindow):
         self.ui.listview_bonus_actions.clear()
         self.ui.listview_reactions.clear()
         self.ui.listview_legendary_actions.clear()
+        self.ui.listview_legendary_actions.model().rowsInserted.connect(
+            self._handler_legendary_action_list_modified
+        )
+        self.ui.listview_legendary_actions.model().rowsRemoved.connect(
+            self._handler_legendary_action_list_modified
+        )
         self.ui.listview_available_statblocks.setSelectionMode(
             QListWidget.SelectionMode.SingleSelection
+        )
+
+    def _handler_legendary_action_list_modified(self, parent, first, last) -> None:
+        has_legendary_actions = self.ui.listview_legendary_actions.count() > 0
+        has_lair = self.ui.checkbox_has_lair.isChecked()
+        self.ui.spinbox_legendary_actions.setEnabled(has_legendary_actions)
+        self.ui.spinbox_legendary_actions_lair_bonus.setEnabled(
+            has_legendary_actions and has_lair
         )
 
     def _init_spinboxes(self) -> None:
@@ -126,9 +140,14 @@ class MainView(QMainWindow):
         self.ui.spinbox_cha.setValue(10)
         self.ui.spinbox_sense_range.setValue(0)
         self.ui.spinbox_telepathy_range.setValue(0)
+        self.ui.spinbox_legendary_actions.setValue(3)
+        self.ui.spinbox_legendary_actions_lair_bonus.setValue(1)
+        self.ui.spinbox_legendary_resistances.setValue(3)
+        self.ui.spinbox_legendary_resistances_lair_bonus.setValue(1)
 
     def _init_checkboxes(self) -> None:
         self.ui.checkbox_has_lair.setChecked(False)
+        self.ui.checkbox_has_lair.toggled.connect(self._handler_lair_toggled)
         self.ui.checkbox_str_proficient.setChecked(False)
         self.ui.checkbox_dex_proficient.setChecked(False)
         self.ui.checkbox_con_proficient.setChecked(False)
@@ -136,6 +155,14 @@ class MainView(QMainWindow):
         self.ui.checkbox_wis_proficient.setChecked(False)
         self.ui.checkbox_cha_proficient.setChecked(False)
         self.ui.checkbox_telepathy.setChecked(False)
+        self.ui.checkbox_is_swarm.setChecked(False)
+
+    def _handler_lair_toggled(self, has_lair: bool) -> None:
+        has_legendary_actions = self.ui.listview_legendary_actions.count() > 0
+        self.ui.spinbox_legendary_actions_lair_bonus.setEnabled(
+            has_legendary_actions and has_lair
+        )
+        self.ui.spinbox_legendary_resistances_lair_bonus.setEnabled(has_lair)
 
     def _init_lineedits(self) -> None:
         self.ui.lineedit_name.clear()
@@ -430,6 +457,29 @@ class MainView(QMainWindow):
         self.ui.spinbox_ac.setValue(statblock.armor_class)
         self.ui.lineedit_hp.setText(statblock.hit_points_str)
         self.ui.lineedit_initiative.setText(statblock.initiative_str)
+        self.ui.checkbox_is_swarm.setChecked(statblock.is_swarm)
+        if statblock.num_legendary_actions is not None:
+            self.ui.spinbox_legendary_actions.setValue(statblock.num_legendary_actions)
+        else:
+            self.ui.spinbox_legendary_actions.setValue(3)
+        if statblock.legendary_actions_lair_bonus is not None:
+            self.ui.spinbox_legendary_actions_lair_bonus.setValue(
+                statblock.legendary_actions_lair_bonus
+            )
+        else:
+            self.ui.spinbox_legendary_actions_lair_bonus.setValue(1)
+        if statblock.num_legendary_resistances is not None:
+            self.ui.spinbox_legendary_resistances.setValue(
+                statblock.num_legendary_resistances
+            )
+        else:
+            self.ui.spinbox_legendary_resistances.setValue(3)
+        if statblock.legendary_resistances_lair_bonus is not None:
+            self.ui.spinbox_legendary_resistances_lair_bonus.setValue(
+                statblock.legendary_resistances_lair_bonus
+            )
+        else:
+            self.ui.spinbox_legendary_resistances_lair_bonus.setValue(1)
         for speed_type, speed_range in statblock.speed.values.items():
             self.add_speed(speed_type=speed_type, speed_range=speed_range)
         self.ui.checkbox_str_proficient.setChecked(
@@ -558,6 +608,56 @@ class MainView(QMainWindow):
     @property
     def selected_speed_range(self) -> int:
         return self.ui.spinbox_speed_range.value()
+
+    @property
+    def num_legendary_resistances(self) -> int | None:
+        if not self.ui.spinbox_legendary_resistances.isEnabled():
+            return None
+        return self.ui.spinbox_legendary_resistances.value()
+
+    @property
+    def legendary_resistances_lair_bonus(self) -> int | None:
+        if not self.ui.spinbox_legendary_resistances_lair_bonus.isEnabled():
+            return None
+        return self.ui.spinbox_legendary_resistances_lair_bonus.value()
+
+    @property
+    def num_legendary_resistances_in_lair(self) -> int | None:
+        if not self.ui.spinbox_legendary_resistances_lair_bonus.isEnabled():
+            return None
+        if self.num_legendary_resistances is None:
+            return None
+        return (
+            self.num_legendary_resistances
+            + self.ui.spinbox_legendary_resistances_lair_bonus.value()
+        )
+
+    @property
+    def num_legendary_actions(self) -> int | None:
+        if not self.ui.spinbox_legendary_actions.isEnabled():
+            return None
+        return self.ui.spinbox_legendary_actions.value()
+
+    @property
+    def legendary_actions_lair_bonus(self) -> int | None:
+        if not self.ui.spinbox_legendary_actions_lair_bonus.isEnabled():
+            return None
+        return self.ui.spinbox_legendary_actions_lair_bonus.value()
+
+    @property
+    def num_legendary_actions_in_lair(self) -> int | None:
+        if not self.ui.spinbox_legendary_actions_lair_bonus.isEnabled():
+            return None
+        if self.num_legendary_actions is None:
+            return None
+        return (
+            self.num_legendary_actions
+            + self.ui.spinbox_legendary_actions_lair_bonus.value()
+        )
+
+    @property
+    def is_swarm(self) -> bool:
+        return self.ui.checkbox_is_swarm.isChecked()
 
     @property
     def speed(self) -> Speed:
@@ -862,6 +962,8 @@ class MainView(QMainWindow):
                 self.ui.checkbox_has_lair.isChecked(),
                 trait_title,
                 trait_description,
+                num_legendary_resistances=self.num_legendary_resistances,
+                legendary_resistances_lair_bonus=self.legendary_resistances_lair_bonus,
                 # TODO: Implement these
                 limited_use_type=LimitedUsageType.UNLIMITED,
                 limited_use_charges={},
@@ -1253,8 +1355,15 @@ class MainView(QMainWindow):
             bonus_actions=self.bonus_actions,
             reactions=self.reactions,
             legendary_actions=self.legendary_actions,
+            is_swarm=self.is_swarm,
+            num_legendary_resistances=self.num_legendary_resistances,
+            legendary_resistances_lair_bonus=self.legendary_resistances_lair_bonus,
+            num_legendary_actions=self.num_legendary_actions,
+            legendary_actions_lair_bonus=self.legendary_actions_lair_bonus,
         )
 
     @property
     def selected_statblock(self) -> str:
-        return self.ui.listview_available_statblocks.selectedItems()[0].text()
+        if self.ui.listview_available_statblocks.selectedItems():
+            return self.ui.listview_available_statblocks.selectedItems()[0].text()
+        return ""

@@ -1,7 +1,7 @@
 from __future__ import annotations
 import math
 import jsonpickle
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from statblocker.data.dice import Dice
 from statblocker.data.enums import (
     Alignment,
@@ -65,6 +65,12 @@ class StatBlock:
     bonus_actions: list[BonusAction]
     reactions: list[Reaction]
     legendary_actions: list[LegendaryAction]
+    # Optional data
+    is_swarm: bool = field(default=False)
+    num_legendary_resistances: int | None = field(default=None)
+    legendary_resistances_lair_bonus: int | None = field(default=None)
+    num_legendary_actions: int | None = field(default=None)
+    legendary_actions_lair_bonus: int | None = field(default=None)
 
     @property
     def habitat_str(self) -> str:
@@ -273,12 +279,23 @@ class StatBlock:
 
     @property
     def legendary_actions_hb_v3_markdown(self) -> str:
-        if not self.legendary_actions:
+        if (
+            not self.legendary_actions
+            or self.num_legendary_actions is None
+            or self.legendary_actions_lair_bonus is None
+        ):
             return ""
+        la_uses_txt = f"{self.num_legendary_actions}" + (
+            f" ({self.num_legendary_actions + self.legendary_actions_lair_bonus} in Lair)"
+            if self.legendary_actions_lair_bonus is not None
+            else ""
+        )
+        short_monster_name = self.name.split(" ")[-1]
+        flavor_text = f"_Legendary Action Uses: {la_uses_txt}. Immediately after another creature's turn, the {short_monster_name} can expend a use to take one of the following actions. The {short_monster_name} regains all expended uses at the start of each of its turns._\n{{color:gray}}\n"
         legendary_actions_str = "\n\n".join(
             [la.hb_v3_markdown for la in self.legendary_actions]
         )
-        return f"### Legendary Actions\n{legendary_actions_str}"
+        return f"### Legendary Actions\n{flavor_text}{legendary_actions_str}"
 
     def to_json(self) -> str:
         return jsonpickle.encode(self, indent=2, unpicklable=True)

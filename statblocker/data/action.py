@@ -26,6 +26,8 @@ class CombatCharacteristic:
     title: str
     description: str
     ctype: CharacteristicType
+    num_legendary_resistances: int | None = field(default=None)
+    legendary_resistances_lair_bonus: int | None = field(default=None)
 
     def __post_init__(self) -> None:
         self.monster_name = " ".join(
@@ -59,17 +61,35 @@ class CombatCharacteristic:
         self.ctype = CharacteristicType[state["ctype"]]
 
     @property
+    def resolved_title(self) -> str:
+        nm = self.title.strip().rstrip(".")
+        return resolve_all_macros(
+            nm,
+            self.monster_name,
+            self.ability_scores,
+            self.proficiency_bonus,
+            self.num_legendary_resistances,
+            self.legendary_resistances_lair_bonus,
+        )
+
+    @property
     def resolved_description(self) -> str:
         desc = self.description.strip().rstrip(".")
         desc = format_keyword_phrases(desc)
         return resolve_all_macros(
-            desc, self.monster_name, self.ability_scores, self.proficiency_bonus
+            desc,
+            self.monster_name,
+            self.ability_scores,
+            self.proficiency_bonus,
+            self.num_legendary_resistances,
+            self.legendary_resistances_lair_bonus,
         )
 
     @property
     def hb_v3_markdown(self) -> str:
+        resolved_title = self.resolved_title
         resolved_desc = self.resolved_description
-        return f"***{self.title}.*** {resolved_desc}{'.' if not resolved_desc.endswith('.') else ''}"
+        return f"***{resolved_title}{'.' if not resolved_title.endswith('.') else ''}*** {resolved_desc}{'.' if not resolved_desc.endswith('.') else ''}"
 
 
 @dataclass
@@ -235,9 +255,7 @@ class MeleeOrRangedAttackRollTemplate(CharacteristicTemplate):
         if not self.label:
             self.label = self.name
         if not self.description:
-            self.description = (
-                f"_Melee or Ranged Attack Roll:_ [{self.ability.abbreviation} ATK], reach ??? ft. or range ??? ft. _Hit:_ [{self.ability.abbreviation} ???D???] ??? damage.",
-            )
+            self.description = f"_Melee or Ranged Attack Roll:_ [{self.ability.abbreviation} ATK], reach ??? ft. or range ??? ft. _Hit:_ [{self.ability.abbreviation} ???D???] ??? damage."
 
 
 @dataclass(kw_only=True)
@@ -741,8 +759,8 @@ ALL_CHARACTERISTIC_TEMPLATES: Final[Sequence[CharacteristicTemplate]] = [
     # Legendary Actions
     TraitTemplate(
         label="Legendary Resistance (???/Day, or ???/Day in Lair)",
-        name="Legendary Resistance (???/Day, or ???/Day in Lair)",
-        description="If the [MON] fails a saving throw, it can choose to succeed instead.",
+        name="Legendary Resistance ([LR]/Day, or [LRL]/Day in Lair)",
+        description="If the [SMON] fails a saving throw, it can choose to succeed instead.",
     ),
     # CharacteristicTemplate(CharacteristicType.LEGENDARY_ACTION, "Blah", "Blah"),
 ]
